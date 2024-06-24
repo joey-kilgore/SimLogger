@@ -101,63 +101,15 @@ def convertLog(logfile='example.log', logdir='.'):
     fileName = logdir + '/' + logfile.split('.')[0] + '.csv'
     df.to_csv(fileName, sep=',')
 
-def readDatFile(filePath, withHeader=False):
-    data = []
-    with open(filePath) as f:
-        if(withHeader):
-            header = f.readline()
-        for i in range(0, int(f.readline())):
-            temp2d = []
-            for j in range(0, int(f.readline())):
-                temp1d = []
-                for k in range(0, int(f.readline())):
-                    temp1d.append(float(f.readline()))
-                temp2d.append(temp1d)
-            data.append(temp2d)
-    return data
-
-def saveInitWeights(simTag, objFolder='./data/obj/', initWeightsFilePath='./initWeights.dat'):
-    initWeights = readDatFile(initWeightsFilePath)
-    saveObj(simTag, 'init_weights', initWeights, objFolder=objFolder, makeNote=False)
-
-def saveWeightFiles(simTag, epochs, weightFileDir='./data/weights', clearFolder=False):
-    for e in range(epochs):
-        weightFile = weightFileDir+'/weights'+str(e)+'.dat'
-        try:
-            tempWeights = readDatFile(weightFile)
-            saveObj(simTag, 'weights_'+str(e), tempWeights)
-      
-            if(clearFolder):
-                os.remove(weightFile)
-        except:
-            print('Training finished early')
-            break
-
-def getWeightFromUniqueId(uniqueId, objFolder='./data/obj'):
+def getObjectFromUniqueId(uniqueId, objFolder=os.path.join('data','obj')):
     fileList = os.listdir(objFolder)
     filePath = [i for i in fileList if uniqueId in i][0]
-    with open(objFolder+'/'+filePath, "rb") as f:
+    with open(os.path.join(objFolder,filePath), "rb") as f:
         tempWeight = pickle.load(f)
 
     return tempWeight
 
-def pklToInitWeights(simTag, epoch, objFolder='./data/obj'):
-    uniqueId = simTag+'_weights_'+str(epoch)
-    if(epoch==-1):
-        uniqueId = simTag+'_init_weights_'
-
-    tempWeight = getWeightFromUniqueId(uniqueId, objFolder=objFolder)
-    initWeightFile = './initWeights.dat'
-    with open(initWeightFile, 'w') as f:
-        f.write(str(len(tempWeight))+'\n')
-        for i in range(0, len(tempWeight)):
-            f.write(str(len(tempWeight[i]))+'\n')
-            for j in range(0, len(tempWeight[i])):
-                f.write(str(len(tempWeight[i][j]))+'\n')
-                for k in range(0, len(tempWeight[i][j])):
-                    f.write(("%.6f"%tempWeight[i][j][k])+'\n')
-
-def isSimTagAvailable(simTag, objFolder='./data/obj'):
+def isSimTagUsed(simTag, objFolder=os.path.join('data','obj')):
     fileList = os.listdir(objFolder)
     fileList = [i for i in fileList if simTag in i]
     if(len(fileList)>0):
