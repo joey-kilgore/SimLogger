@@ -1,0 +1,9 @@
+[project]
+name = "SimLogger"
+version = "0.1"
+readme = "README.md"
+authors = [{ name = "Joey Kilgore", email = "joey.a.kilgore@gmail.com"}]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
