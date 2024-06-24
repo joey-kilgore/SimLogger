@@ -1,8 +1,11 @@
 [project]
 name = "SimLogger"
-version = "0.1"
+version = "0.1.2"
 readme = "README.md"
 authors = [{ name = "Joey Kilgore", email = "joey.a.kilgore@gmail.com"}]
+dependencies = [
+    "pandas"
+]
 
 [build-system]
 requires = ["hatchling"]
