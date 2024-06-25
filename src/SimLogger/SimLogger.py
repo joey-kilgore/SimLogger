@@ -90,8 +90,8 @@ def convertLog(logfile="example.log", logdir="."):
             obj = lineSplit[3].replace("\n", "")
             date = lineSplit[0].split(" ")[0]
             time = lineSplit[0].split(" ")[1]
-            inOut = lineSplit[0].split("]")[1].replace(" ", "")
-        except:
+            lineSplit[0].split("]")[1].replace(" ", "")
+        except Exception:
             print("non-object line : " + line)
             continue
         if curSimTag != simTag:
