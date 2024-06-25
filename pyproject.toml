@@ -1,10 +1,12 @@
 [project]
 name = "SimLogger"
-version = "0.1.2"
+version = "0.2.1"
 readme = "README.md"
 authors = [{ name = "Joey Kilgore", email = "joey.a.kilgore@gmail.com"}]
 dependencies = [
-    "pandas"
+    "pandas",
+    "plotly",
+    "figurl"
 ]
 
 [build-system]
