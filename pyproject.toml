@@ -13,7 +13,9 @@ dependencies = [
 test = [
     "pytest"
 ]
-
+lint = [
+    "pre-commit"
+]
 
 [build-system]
 requires = ["hatchling"]
