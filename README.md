@@ -41,3 +41,13 @@ To utilize the FigLogger you will need to register your machine ssh keys with ka
 Run the following command and follow the instructions  
 ```kachery-cloud-init```
 
+
+## Development  
+install all dependencies (including linting and testing) with:  
+`pip install -e '.[lint,test]`  
+
+run tests with:  
+`pytest tests/`
+
+run linting + formatting + etc with:  
+`pre-commit run --all-files`
