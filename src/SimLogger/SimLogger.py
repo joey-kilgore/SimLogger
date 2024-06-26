@@ -53,7 +53,7 @@ def logNotes(notes):
 def saveObj(simTag, objTag, obj, objFolder=os.path.join("data", "obj"), makeNote=False):
     """Save an object (obj) to pickle file in the object folder.
     The file name will be the {simTag}_{objTag}_{dateTimeString}.pkl
-    
+
     Args:
         simTag (str): Unique tag for the simulation
         objTag (str): Unique tag for the object within the simulation
@@ -85,7 +85,8 @@ def saveSimulation(simTag, inputDict, outputDict, notes="No additional notes"):
 
     Args:
         simTag (str): Unique tag for the simulation
-        inputDict ({str:Object}): list of object names (keys) and the objects to be saved (values)
+        inputDict ({str:Object}): list of object names (keys) and
+                                    the objects to be saved (values)
         outputDict ({str:Object}): same structure as the inputDict
         notes (str): Additional notes to be written at the end of the log
 
@@ -163,7 +164,7 @@ def convertLog(logfile="example.log", logdir="."):
 
 def getObjectFromUniqueId(uniqueId, objFolder=os.path.join("data", "obj")):
     """Loads an object previously saved from the unique id ({simTag}_{objTag})
-    
+
     Args:
         uniqueId (str): Unique id of the pickled file name ({simTag}_{objTag})
         objFolder (str): Folder containing the pickled files
@@ -180,7 +181,8 @@ def getObjectFromUniqueId(uniqueId, objFolder=os.path.join("data", "obj")):
 
 
 def isSimTagUsed(simTag, objFolder=os.path.join("data", "obj")):
-    """Checks if there are any objects already saved in the objFolder that uses the simTag
+    """Checks if there are any objects already saved in the objFolder
+    that uses the simTag
 
     Args:
         simTag (str): Unique simulation id

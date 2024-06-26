@@ -19,7 +19,8 @@ def createPlot(
     **kwargs,
 ):
     """Generate a plot that will automatically be saved (using SimLogger)
-    and will generate a url to access the graph through the cloud (see kachery-cloud-init)
+    and will generate a url to access the graph through the cloud
+    (see kachery-cloud-init)
 
     Args:
         simTag (str): Unique id for the simulation
@@ -73,7 +74,7 @@ def savePlotly(
         label (str): Optional label for the figurl cloud saved graph
         objFolder (str): location where the pickled objects should go
         makeNote (str): Note in the log that the pickled file was saved
-    
+
     Returns:
         url (str): The figurl link to access the graph
     """

@@ -5,33 +5,33 @@
 
 import os
 import sys
-sys.path.insert(0, os.path.abspath('../../src'))
+
+sys.path.insert(0, os.path.abspath("../../src"))
 
 # -- Project information -----------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 
-project = 'SimLogger'
-copyright = '2024, Joey Kilgore'
-author = 'Joey Kilgore'
+project = "SimLogger"
+copyright = "2024, Joey Kilgore"
+author = "Joey Kilgore"
 
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
 
 extensions = []
 
-templates_path = ['_templates']
+templates_path = ["_templates"]
 exclude_patterns = []
-
 
 
 # -- Options for HTML output -------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#options-for-html-output
 
-html_theme = 'alabaster'
-html_static_path = ['_static']
+html_theme = "alabaster"
+html_static_path = ["_static"]
 
 extensions = [
-    'sphinx.ext.autodoc',
-    'sphinx.ext.napoleon',  # Optional: for Google and NumPy style docstrings
-    'sphinx.ext.viewcode',  # Optional: for adding links to the source code
+    "sphinx.ext.autodoc",
+    "sphinx.ext.napoleon",  # Optional: for Google and NumPy style docstrings
+    "sphinx.ext.viewcode",  # Optional: for adding links to the source code
 ]
