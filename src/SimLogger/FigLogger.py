@@ -18,6 +18,27 @@ def createPlot(
     makeNote=True,
     **kwargs,
 ):
+    """Generate a plot that will automatically be saved (using SimLogger)
+    and will generate a url to access the graph through the cloud (see kachery-cloud-init)
+
+    Args:
+        simTag (str): Unique id for the simulation
+        objTag (str): Unique id for this graph within the simulation
+        x ([int|float]): x values for the graph
+        y ([int|float]): y values for the graph
+        objFolder (str): location where the pickled objects should go
+        z ([int|float[): z values for the graph (optional, but only for 3d scatter)
+        plotType (str): Either "scatter" for scatter plots
+                        Or "line" for line plots (not for 3d plots)
+        title (str): Title for the plot
+        labels ({str:str}): Key value pairs for the keys "x", "y", ("z") that go to
+                            the values corresponding to the axis labels
+        makeNote (bool): Whether the log should be noted with the saved files
+        **kwargs: Additional args for the plotly express graph
+
+    Returns:
+        None
+    """
     data = {"x": x, "y": y}
     if z is not None:
         data["z"] = z
@@ -42,6 +63,20 @@ def createPlot(
 def savePlotly(
     simTag, objTag, ff, label="", objFolder=os.path.join("data", "obj"), makeNote=True
 ):
+    """Save a previously created plotly graph to the cloud for remote access
+    and pickle the graph for access later
+
+    Args:
+        simTag (str): Unique id for the simulation
+        objTag (str): Unique id for the graph within the simulation
+        ff (plotly figure): User created figure (with plotly)
+        label (str): Optional label for the figurl cloud saved graph
+        objFolder (str): location where the pickled objects should go
+        makeNote (str): Note in the log that the pickled file was saved
+    
+    Returns:
+        url (str): The figurl link to access the graph
+    """
     if label == "":
         label = objTag
     url = fig.Plotly(ff).url(label=label)
