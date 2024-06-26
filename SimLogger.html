@@ -37,69 +37,17 @@
 <section id="submodules">
 <h2>Submodules<a class="headerlink" href="#submodules" title="Link to this heading">¶</a></h2>
 </section>
-<section id="module-SimLogger.FigLogger">
-<span id="simlogger-figlogger-module"></span><h2>SimLogger.FigLogger module<a class="headerlink" href="#module-SimLogger.FigLogger" title="Link to this heading">¶</a></h2>
-<dl class="py function">
-<dt class="sig sig-object py" id="SimLogger.FigLogger.createPlot">
-<span class="sig-prename descclassname"><span class="pre">SimLogger.FigLogger.</span></span><span class="sig-name descname"><span class="pre">createPlot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">simTag</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">objTag</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">objFolder</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'data/obj'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">z</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">plotType</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'scatter'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">title</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Plot'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">labels</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">{'x':</span> <span class="pre">'x',</span> <span class="pre">'y':</span> <span class="pre">'y',</span> <span class="pre">'z':</span> <span class="pre">'z'}</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">makeNote</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/SimLogger/FigLogger.html#createPlot"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#SimLogger.FigLogger.createPlot" title="Link to this definition">¶</a></dt>
-<dd><p>Generate a plot that will automatically be saved (using SimLogger)
-and will generate a url to access the graph through the cloud
-(see kachery-cloud-init)</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>simTag</strong> (<em>str</em>) – Unique id for the simulation</p></li>
-<li><p><strong>objTag</strong> (<em>str</em>) – Unique id for this graph within the simulation</p></li>
-<li><p><strong>x</strong> (<em>[</em><em>int</em><em>|</em><em>float</em><em>]</em>) – x values for the graph</p></li>
-<li><p><strong>y</strong> (<em>[</em><em>int</em><em>|</em><em>float</em><em>]</em>) – y values for the graph</p></li>
-<li><p><strong>objFolder</strong> (<em>str</em>) – location where the pickled objects should go</p></li>
-<li><p><strong>z</strong> (<em>[</em><em>int</em><em>|</em><em>float</em><em>[</em>) – z values for the graph (optional, but only for 3d scatter)</p></li>
-<li><p><strong>plotType</strong> (<em>str</em>) – Either “scatter” for scatter plots
-Or “line” for line plots (not for 3d plots)</p></li>
-<li><p><strong>title</strong> (<em>str</em>) – Title for the plot</p></li>
-<li><p><strong>(</strong><strong>{str</strong> (<em>labels</em>) – str}): Key value pairs for the keys “x”, “y”, (“z”) that go to
-the values corresponding to the axis labels</p></li>
-<li><p><strong>makeNote</strong> (<em>bool</em>) – Whether the log should be noted with the saved files</p></li>
-<li><p><strong>**kwargs</strong> – Additional args for the plotly express graph</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>None</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="SimLogger.FigLogger.savePlotly">
-<span class="sig-prename descclassname"><span class="pre">SimLogger.FigLogger.</span></span><span class="sig-name descname"><span class="pre">savePlotly</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">simTag</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">objTag</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ff</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">label</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">objFolder</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'data/obj'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">makeNote</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/SimLogger/FigLogger.html#savePlotly"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#SimLogger.FigLogger.savePlotly" title="Link to this definition">¶</a></dt>
-<dd><p>Save a previously created plotly graph to the cloud for remote access
-and pickle the graph for access later</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>simTag</strong> (<em>str</em>) – Unique id for the simulation</p></li>
-<li><p><strong>objTag</strong> (<em>str</em>) – Unique id for the graph within the simulation</p></li>
-<li><p><strong>ff</strong> (<em>plotly figure</em>) – User created figure (with plotly)</p></li>
-<li><p><strong>label</strong> (<em>str</em>) – Optional label for the figurl cloud saved graph</p></li>
-<li><p><strong>objFolder</strong> (<em>str</em>) – location where the pickled objects should go</p></li>
-<li><p><strong>makeNote</strong> (<em>str</em>) – Note in the log that the pickled file was saved</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>The figurl link to access the graph</p>
-</dd>
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>url (str)</p>
-</dd>
-</dl>
-</dd></dl>
-
+<section id="simlogger-figlogger-module">
+<h2>SimLogger.FigLogger module<a class="headerlink" href="#simlogger-figlogger-module" title="Link to this heading">¶</a></h2>
 </section>
-<section id="module-SimLogger.SimLogger">
-<span id="simlogger-simlogger-module"></span><h2>SimLogger.SimLogger module<a class="headerlink" href="#module-SimLogger.SimLogger" title="Link to this heading">¶</a></h2>
+<section id="simlogger-simlogger-module">
+<h2>SimLogger.SimLogger module<a class="headerlink" href="#simlogger-simlogger-module" title="Link to this heading">¶</a></h2>
+</section>
+<section id="module-SimLogger">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-SimLogger" title="Link to this heading">¶</a></h2>
 <dl class="py function">
-<dt class="sig sig-object py" id="SimLogger.SimLogger.convertLog">
-<span class="sig-prename descclassname"><span class="pre">SimLogger.SimLogger.</span></span><span class="sig-name descname"><span class="pre">convertLog</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">logfile</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'example.log'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">logdir</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'.'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/SimLogger/SimLogger.html#convertLog"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#SimLogger.SimLogger.convertLog" title="Link to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="SimLogger.convertLog">
+<span class="sig-prename descclassname"><span class="pre">SimLogger.</span></span><span class="sig-name descname"><span class="pre">convertLog</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">logfile</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'example.log'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">logdir</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'.'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/SimLogger.html#convertLog"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#SimLogger.convertLog" title="Link to this definition">¶</a></dt>
 <dd><p>Convert a log to a csv format based on the simulation input/outputs</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -115,8 +63,8 @@ and pickle the graph for access later</p>
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="SimLogger.SimLogger.getObjectFromUniqueId">
-<span class="sig-prename descclassname"><span class="pre">SimLogger.SimLogger.</span></span><span class="sig-name descname"><span class="pre">getObjectFromUniqueId</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">uniqueId</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">objFolder</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'data/obj'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/SimLogger/SimLogger.html#getObjectFromUniqueId"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#SimLogger.SimLogger.getObjectFromUniqueId" title="Link to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="SimLogger.getObjectFromUniqueId">
+<span class="sig-prename descclassname"><span class="pre">SimLogger.</span></span><span class="sig-name descname"><span class="pre">getObjectFromUniqueId</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">uniqueId</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">objFolder</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'data/obj'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/SimLogger.html#getObjectFromUniqueId"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#SimLogger.getObjectFromUniqueId" title="Link to this definition">¶</a></dt>
 <dd><p>Loads an object previously saved from the unique id ({simTag}_{objTag})</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -135,8 +83,8 @@ and pickle the graph for access later</p>
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="SimLogger.SimLogger.isSimTagUsed">
-<span class="sig-prename descclassname"><span class="pre">SimLogger.SimLogger.</span></span><span class="sig-name descname"><span class="pre">isSimTagUsed</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">simTag</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">objFolder</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'data/obj'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/SimLogger/SimLogger.html#isSimTagUsed"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#SimLogger.SimLogger.isSimTagUsed" title="Link to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="SimLogger.isSimTagUsed">
+<span class="sig-prename descclassname"><span class="pre">SimLogger.</span></span><span class="sig-name descname"><span class="pre">isSimTagUsed</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">simTag</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">objFolder</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'data/obj'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/SimLogger.html#isSimTagUsed"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#SimLogger.isSimTagUsed" title="Link to this definition">¶</a></dt>
 <dd><p>Checks if there are any objects already saved in the objFolder
 that uses the simTag</p>
 <dl class="field-list simple">
@@ -156,8 +104,8 @@ that uses the simTag</p>
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="SimLogger.SimLogger.logNotes">
-<span class="sig-prename descclassname"><span class="pre">SimLogger.SimLogger.</span></span><span class="sig-name descname"><span class="pre">logNotes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">notes</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/SimLogger/SimLogger.html#logNotes"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#SimLogger.SimLogger.logNotes" title="Link to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="SimLogger.logNotes">
+<span class="sig-prename descclassname"><span class="pre">SimLogger.</span></span><span class="sig-name descname"><span class="pre">logNotes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">notes</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/SimLogger.html#logNotes"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#SimLogger.logNotes" title="Link to this definition">¶</a></dt>
 <dd><p>Save a notes string to the log directly</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -170,8 +118,8 @@ that uses the simTag</p>
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="SimLogger.SimLogger.saveObj">
-<span class="sig-prename descclassname"><span class="pre">SimLogger.SimLogger.</span></span><span class="sig-name descname"><span class="pre">saveObj</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">simTag</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">objTag</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">obj</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">objFolder</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'data/obj'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">makeNote</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/SimLogger/SimLogger.html#saveObj"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#SimLogger.SimLogger.saveObj" title="Link to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="SimLogger.saveObj">
+<span class="sig-prename descclassname"><span class="pre">SimLogger.</span></span><span class="sig-name descname"><span class="pre">saveObj</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">simTag</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">objTag</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">obj</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">objFolder</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'data/obj'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">makeNote</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/SimLogger.html#saveObj"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#SimLogger.saveObj" title="Link to this definition">¶</a></dt>
 <dd><p>Save an object (obj) to pickle file in the object folder.
 The file name will be the {simTag}_{objTag}_{dateTimeString}.pkl</p>
 <dl class="field-list simple">
@@ -194,8 +142,8 @@ The file name will be the {simTag}_{objTag}_{dateTimeString}.pkl</p>
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="SimLogger.SimLogger.saveSimulation">
-<span class="sig-prename descclassname"><span class="pre">SimLogger.SimLogger.</span></span><span class="sig-name descname"><span class="pre">saveSimulation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">simTag</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inputDict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">outputDict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">notes</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'No</span> <span class="pre">additional</span> <span class="pre">notes'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/SimLogger/SimLogger.html#saveSimulation"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#SimLogger.SimLogger.saveSimulation" title="Link to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="SimLogger.saveSimulation">
+<span class="sig-prename descclassname"><span class="pre">SimLogger.</span></span><span class="sig-name descname"><span class="pre">saveSimulation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">simTag</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inputDict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">outputDict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">notes</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'No</span> <span class="pre">additional</span> <span class="pre">notes'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/SimLogger.html#saveSimulation"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#SimLogger.saveSimulation" title="Link to this definition">¶</a></dt>
 <dd><p>Save inputs and outputs of a simulation</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -214,8 +162,8 @@ the objects to be saved (values)</p></li>
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="SimLogger.SimLogger.setupLogger">
-<span class="sig-prename descclassname"><span class="pre">SimLogger.SimLogger.</span></span><span class="sig-name descname"><span class="pre">setupLogger</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fileName</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'example.log'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/SimLogger/SimLogger.html#setupLogger"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#SimLogger.SimLogger.setupLogger" title="Link to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="SimLogger.setupLogger">
+<span class="sig-prename descclassname"><span class="pre">SimLogger.</span></span><span class="sig-name descname"><span class="pre">setupLogger</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fileName</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'example.log'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/SimLogger.html#setupLogger"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#SimLogger.setupLogger" title="Link to this definition">¶</a></dt>
 <dd><p>Initialize the logger. Sets the log directory and the default object directoy.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -227,9 +175,6 @@ the objects to be saved (values)</p></li>
 </dl>
 </dd></dl>
 
-</section>
-<section id="module-SimLogger">
-<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-SimLogger" title="Link to this heading">¶</a></h2>
 </section>
 </section>
 
@@ -254,8 +199,8 @@ the objects to be saved (values)</p></li>
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">SimLogger package</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#submodules">Submodules</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#module-SimLogger.FigLogger">SimLogger.FigLogger module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#module-SimLogger.SimLogger">SimLogger.SimLogger module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#simlogger-figlogger-module">SimLogger.FigLogger module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#simlogger-simlogger-module">SimLogger.SimLogger module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#module-SimLogger">Module contents</a></li>
 </ul>
 </li>
