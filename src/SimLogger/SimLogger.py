@@ -9,6 +9,14 @@ isLoaded = False
 
 
 def setupLogger(fileName="example.log"):
+    """Initialize the logger. Sets the log directory and the default object directoy.
+
+    Args:
+        fileName (str): file name for the log output
+
+    Returns:
+        None
+    """
     global isLoaded
     Path("data").mkdir(parents=True, exist_ok=True)
     Path(os.path.join("data", "obj")).mkdir(parents=True, exist_ok=True)
@@ -28,6 +36,14 @@ def setupLogger(fileName="example.log"):
 
 
 def logNotes(notes):
+    """Save a notes string to the log directly
+
+    Args:
+        notes (str): text that will be written to the log
+
+    Returns:
+        None
+    """
     global isLoaded
     if not isLoaded:
         setupLogger()
@@ -35,6 +51,19 @@ def logNotes(notes):
 
 
 def saveObj(simTag, objTag, obj, objFolder=os.path.join("data", "obj"), makeNote=False):
+    """Save an object (obj) to pickle file in the object folder.
+    The file name will be the {simTag}_{objTag}_{dateTimeString}.pkl
+
+    Args:
+        simTag (str): Unique tag for the simulation
+        objTag (str): Unique tag for the object within the simulation
+        obj (Object): Object to be pickled and saved to file
+        objFolder (str): Folder where the pickled file will be saved
+        makeNote (bool): Sets whether an additional note is made about the object
+
+    Returns:
+        filePath (str): the unique file path where the pickled object is saved
+    """
     global isLoaded
     if not isLoaded:
         setupLogger()
@@ -52,6 +81,18 @@ def saveObj(simTag, objTag, obj, objFolder=os.path.join("data", "obj"), makeNote
 
 
 def saveSimulation(simTag, inputDict, outputDict, notes="No additional notes"):
+    """Save inputs and outputs of a simulation
+
+    Args:
+        simTag (str): Unique tag for the simulation
+        inputDict ({str:Object}): list of object names (keys) and
+                                    the objects to be saved (values)
+        outputDict ({str:Object}): same structure as the inputDict
+        notes (str): Additional notes to be written at the end of the log
+
+    Returns:
+        None
+    """
     global isLoaded
     if not isLoaded:
         setupLogger()
@@ -77,6 +118,15 @@ def saveSimulation(simTag, inputDict, outputDict, notes="No additional notes"):
 
 
 def convertLog(logfile="example.log", logdir="."):
+    """Convert a log to a csv format based on the simulation input/outputs
+
+    Args:
+        logfile (str): the log file name
+        logdir (str): directory where the file is located
+
+    Returns:
+        None
+    """
     lines = []
     with open(os.path.join(logdir, logfile), "r") as f:
         lines = f.readlines()
@@ -113,15 +163,34 @@ def convertLog(logfile="example.log", logdir="."):
 
 
 def getObjectFromUniqueId(uniqueId, objFolder=os.path.join("data", "obj")):
+    """Loads an object previously saved from the unique id ({simTag}_{objTag})
+
+    Args:
+        uniqueId (str): Unique id of the pickled file name ({simTag}_{objTag})
+        objFolder (str): Folder containing the pickled files
+
+    Returns:
+        obj (Object): Loaded pickled object
+    """
     fileList = os.listdir(objFolder)
     filePath = [i for i in fileList if uniqueId in i][0]
     with open(os.path.join(objFolder, filePath), "rb") as f:
-        tempWeight = pickle.load(f)
+        tempObj = pickle.load(f)
 
-    return tempWeight
+    return tempObj
 
 
 def isSimTagUsed(simTag, objFolder=os.path.join("data", "obj")):
+    """Checks if there are any objects already saved in the objFolder
+    that uses the simTag
+
+    Args:
+        simTag (str): Unique simulation id
+        objFolder (str): Folder containing the pickled files
+
+    Returns:
+        isUsed (bool): whether there are pkl files with the simTag used
+    """
     fileList = os.listdir(objFolder)
     fileList = [i for i in fileList if simTag in i]
     if len(fileList) > 0:
