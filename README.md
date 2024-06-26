@@ -1,3 +1,6 @@
+![CI Status](https://github.com/joey-kilgore/SimLogger/actions/workflows/ci.yml/badge.svg)
+![PyPI](https://img.shields.io/pypi/v/simlogger)
+
 # SimLogger
 Logger and python data archiving
 
