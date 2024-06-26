@@ -17,8 +17,18 @@ jobs:
       contents: write
     steps:
     - uses: actions/checkout@v4
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.12'
+    - name: Install dependencies
+      run: |
+        python3 -m pip install --upgrade pip
+        pip install . sphinx myst_parser
     - name: Build HTML
-      uses: ammaraskar/sphinx-action@master
+      run: |
+        cd docs
+        make html
     - name: Upload artifacts
       uses: actions/upload-artifact@v4
       with:
@@ -30,3 +40,4 @@ jobs:
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
         publish_dir: docs/build/html
+
