@@ -2,6 +2,7 @@
 ![PyPI](https://img.shields.io/pypi/v/simlogger)
 
 # SimLogger
+See the docs! - https://joey-kilgore.github.io/SimLogger/index.html
 Logger and python data archiving
 
 Archive your python objects simply and easiy, and never worry about overwriting files.
