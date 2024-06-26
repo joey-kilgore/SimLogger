@@ -16,6 +16,9 @@ test = [
 lint = [
     "pre-commit"
 ]
+doc = [
+    "sphinx"
+]
 
 [build-system]
 requires = ["hatchling"]
