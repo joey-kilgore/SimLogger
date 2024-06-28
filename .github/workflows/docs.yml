@@ -20,11 +20,19 @@ jobs:
     - name: Set up Python
       uses: actions/setup-python@v2
       with:
-        python-version: '3.12'
+        python-version: '3.8'
     - name: Install dependencies
       run: |
         python3 -m pip install --upgrade pip
-        pip install . sphinx myst_parser
+        pip install sphinx 
+        pip install myst_parser
+        pip install .
+    - name: List src directory for debugging
+      run: |
+         ls -R src
+    - name: Verify installation
+      run: |
+        pip show SimLogger
     - name: Build HTML
       run: |
         cd docs
