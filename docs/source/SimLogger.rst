@@ -1,9 +1,6 @@
 SimLogger package
 =================
 
-Submodules
-----------
-
 SimLogger.FigLogger module
 --------------------------
 
@@ -20,10 +17,3 @@ SimLogger.SimLogger module
    :undoc-members:
    :show-inheritance:
 
-Module contents
----------------
-
-.. automodule:: SimLogger
-   :members:
-   :undoc-members:
-   :show-inheritance:

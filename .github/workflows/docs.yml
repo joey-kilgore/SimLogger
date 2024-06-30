@@ -24,9 +24,7 @@ jobs:
     - name: Install dependencies
       run: |
         python3 -m pip install --upgrade pip
-        pip install sphinx 
-        pip install myst_parser
-        pip install .
+        pip install .[doc]
     - name: List src directory for debugging
       run: |
          ls -R src

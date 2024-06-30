@@ -24,7 +24,8 @@ lint = [
     "pre-commit"
 ]
 doc = [
-    "sphinx"
+    "sphinx",
+    "sphinx-rtd-theme"
 ]
 
 [build-system]
