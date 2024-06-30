@@ -214,11 +214,16 @@ the objects to be saved (values)</p></li>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="SimLogger.SimLogger.setupLogger">
-<span class="sig-prename descclassname"><span class="pre">SimLogger.SimLogger.</span></span><span class="sig-name descname"><span class="pre">setupLogger</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fileName</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'example.log'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/SimLogger/SimLogger.html#setupLogger"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#SimLogger.SimLogger.setupLogger" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">SimLogger.SimLogger.</span></span><span class="sig-name descname"><span class="pre">setupLogger</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fileName</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'example.log'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">githubLink</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/SimLogger/SimLogger.html#setupLogger"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#SimLogger.SimLogger.setupLogger" title="Permalink to this definition">¶</a></dt>
 <dd><p>Initialize the logger. Sets the log directory and the default object directoy.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>fileName</strong> (<em>str</em>) – file name for the log output</p>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>fileName</strong> (<em>str</em>) – file name for the log output</p></li>
+<li><p><strong>githubLink</strong> (<em>str</em>) – link to the github repository to allow for the note
+of the most recent commit to be in the form of a github link
+directly to that commit ex. “www.github.com/joey-kilgore/SimLogger”</p></li>
+</ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>None</p>

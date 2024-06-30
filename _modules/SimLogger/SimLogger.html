@@ -35,15 +35,19 @@
 <span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">from</span> <span class="nn">git</span> <span class="kn">import</span> <span class="n">Repo</span>
 
 <span class="n">isLoaded</span> <span class="o">=</span> <span class="kc">False</span>
 
 
-<div class="viewcode-block" id="setupLogger"><a class="viewcode-back" href="../../SimLogger.html#SimLogger.SimLogger.setupLogger">[docs]</a><span class="k">def</span> <span class="nf">setupLogger</span><span class="p">(</span><span class="n">fileName</span><span class="o">=</span><span class="s2">&quot;example.log&quot;</span><span class="p">):</span>
+<div class="viewcode-block" id="setupLogger"><a class="viewcode-back" href="../../SimLogger.html#SimLogger.SimLogger.setupLogger">[docs]</a><span class="k">def</span> <span class="nf">setupLogger</span><span class="p">(</span><span class="n">fileName</span><span class="o">=</span><span class="s2">&quot;example.log&quot;</span><span class="p">,</span> <span class="n">githubLink</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Initialize the logger. Sets the log directory and the default object directoy.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        fileName (str): file name for the log output</span>
+<span class="sd">        githubLink (str): link to the github repository to allow for the note</span>
+<span class="sd">            of the most recent commit to be in the form of a github link</span>
+<span class="sd">            directly to that commit ex. &quot;www.github.com/joey-kilgore/SimLogger&quot;</span>
 
 <span class="sd">    Returns:</span>
 <span class="sd">        None</span>
@@ -63,7 +67,17 @@
     <span class="n">consoleHandler</span><span class="o">.</span><span class="n">setFormatter</span><span class="p">(</span><span class="n">logFormatter</span><span class="p">)</span>
     <span class="n">rootLogger</span><span class="o">.</span><span class="n">addHandler</span><span class="p">(</span><span class="n">consoleHandler</span><span class="p">)</span>
     <span class="n">isLoaded</span> <span class="o">=</span> <span class="kc">True</span>
-    <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Logger Loaded&quot;</span><span class="p">)</span></div>
+    <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Logger Loaded&quot;</span><span class="p">)</span>
+
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">repo</span> <span class="o">=</span> <span class="n">Repo</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">)</span>
+        <span class="n">commitSHA</span> <span class="o">=</span> <span class="n">repo</span><span class="o">.</span><span class="n">head</span><span class="o">.</span><span class="n">object</span><span class="o">.</span><span class="n">hexsha</span>
+        <span class="k">if</span> <span class="n">githubLink</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">logNotes</span><span class="p">(</span><span class="s2">&quot;COMMIT LINK: &quot;</span> <span class="o">+</span> <span class="n">githubLink</span> <span class="o">+</span> <span class="s2">&quot;/commit/&quot;</span> <span class="o">+</span> <span class="n">commitSHA</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">logNotes</span><span class="p">(</span><span class="s2">&quot;COMMIT SHA: &quot;</span> <span class="o">+</span> <span class="n">commitSHA</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="n">logNotes</span><span class="p">(</span><span class="s2">&quot;ERROR LOADING GIT: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">))</span></div>
 
 
 <div class="viewcode-block" id="logNotes"><a class="viewcode-back" href="../../SimLogger.html#SimLogger.SimLogger.logNotes">[docs]</a><span class="k">def</span> <span class="nf">logNotes</span><span class="p">(</span><span class="n">notes</span><span class="p">):</span>
