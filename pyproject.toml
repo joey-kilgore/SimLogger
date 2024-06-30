@@ -6,7 +6,8 @@ authors = [{ name = "Joey Kilgore", email = "joey.a.kilgore@gmail.com"}]
 dependencies = [
     "pandas",
     "plotly",
-    "figurl"
+    "figurl",
+    "GitPython"
 ]
 
 [project.optional-dependencies]
