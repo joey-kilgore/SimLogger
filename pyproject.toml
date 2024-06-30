@@ -1,13 +1,20 @@
 [project]
 name = "SimLogger"
-version = "0.2.1"
+description = "Simplify scientific data logging"
+version = "0.3.1"
 readme = "README.md"
 authors = [{ name = "Joey Kilgore", email = "joey.a.kilgore@gmail.com"}]
 dependencies = [
     "pandas",
     "plotly",
-    "figurl"
+    "figurl",
+    "GitPython"
 ]
+
+[project.url]
+Homepage = "https://joey-kilgore.github.io/SimLogger/index.html"
+Source = "https://github.com/joey-kilgore/SimLogger"
+Tracker = "https://github.com/joey-kilgore/SimLogger/issues"
 
 [project.optional-dependencies]
 test = [

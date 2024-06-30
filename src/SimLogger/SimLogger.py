@@ -4,15 +4,19 @@ from datetime import datetime
 from pathlib import Path
 import pandas as pd
 import os
+from git import Repo
 
 isLoaded = False
 
 
-def setupLogger(fileName="example.log"):
+def setupLogger(fileName="example.log", githubLink=None):
     """Initialize the logger. Sets the log directory and the default object directoy.
 
     Args:
         fileName (str): file name for the log output
+        githubLink (str): link to the github repository to allow for the note
+            of the most recent commit to be in the form of a github link
+            directly to that commit ex. "www.github.com/joey-kilgore/SimLogger"
 
     Returns:
         None
@@ -33,6 +37,16 @@ def setupLogger(fileName="example.log"):
     rootLogger.addHandler(consoleHandler)
     isLoaded = True
     logging.info("Logger Loaded")
+
+    try:
+        repo = Repo(".")
+        commitSHA = repo.head.object.hexsha
+        if githubLink is not None:
+            logNotes("COMMIT LINK: " + githubLink + "/commit/" + commitSHA)
+        else:
+            logNotes("COMMIT SHA: " + commitSHA)
+    except Exception as e:
+        logNotes("ERROR LOADING GIT: " + str(e))
 
 
 def logNotes(notes):
