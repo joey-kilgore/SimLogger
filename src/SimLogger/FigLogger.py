@@ -58,8 +58,11 @@ def createPlot(
     else:
         raise ValueError("Unsupported plotType. Supported types: 'scatter', 'line'.")
 
-    url = savePlotly(simTag, objTag, fig, label=title, objFolder=objFolder, makeNote=makeNote)
+    url = savePlotly(
+        simTag, objTag, fig, label=title, objFolder=objFolder, makeNote=makeNote
+    )
     return url
+
 
 def savePlotly(
     simTag, objTag, ff, label="", objFolder=os.path.join("data", "obj"), makeNote=True
