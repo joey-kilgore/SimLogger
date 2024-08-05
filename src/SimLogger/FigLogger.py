@@ -38,7 +38,7 @@ def createPlot(
         **kwargs: Additional args for the plotly express graph
 
     Returns:
-        None
+        url (str): The figurl link to access the graph
     """
     data = {"x": x, "y": y}
     if z is not None:
@@ -58,7 +58,10 @@ def createPlot(
     else:
         raise ValueError("Unsupported plotType. Supported types: 'scatter', 'line'.")
 
-    savePlotly(simTag, objTag, fig, label=title, objFolder=objFolder, makeNote=makeNote)
+    url = savePlotly(
+        simTag, objTag, fig, label=title, objFolder=objFolder, makeNote=makeNote
+    )
+    return url
 
 
 def savePlotly(
