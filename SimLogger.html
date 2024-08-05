@@ -46,11 +46,6 @@
               <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">SimLogger package</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#module-SimLogger.FigLogger">SimLogger.FigLogger module</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#SimLogger.FigLogger.createPlot"><code class="docutils literal notranslate"><span class="pre">createPlot()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#SimLogger.FigLogger.savePlotly"><code class="docutils literal notranslate"><span class="pre">savePlotly()</span></code></a></li>
-</ul>
-</li>
 <li class="toctree-l2"><a class="reference internal" href="#module-SimLogger.SimLogger">SimLogger.SimLogger module</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#SimLogger.SimLogger.convertLog"><code class="docutils literal notranslate"><span class="pre">convertLog()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#SimLogger.SimLogger.getObjectFromUniqueId"><code class="docutils literal notranslate"><span class="pre">getObjectFromUniqueId()</span></code></a></li>
@@ -59,6 +54,15 @@
 <li class="toctree-l3"><a class="reference internal" href="#SimLogger.SimLogger.saveObj"><code class="docutils literal notranslate"><span class="pre">saveObj()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#SimLogger.SimLogger.saveSimulation"><code class="docutils literal notranslate"><span class="pre">saveSimulation()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#SimLogger.SimLogger.setupLogger"><code class="docutils literal notranslate"><span class="pre">setupLogger()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#module-SimLogger.FigLogger">SimLogger.FigLogger module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#SimLogger.FigLogger.createPlot"><code class="docutils literal notranslate"><span class="pre">createPlot()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#SimLogger.FigLogger.savePlotly"><code class="docutils literal notranslate"><span class="pre">savePlotly()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#module-SimLogger.SimNotify">SimLogger.SimNotify module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#SimLogger.SimNotify.sendNotification"><code class="docutils literal notranslate"><span class="pre">sendNotification()</span></code></a></li>
 </ul>
 </li>
 </ul>
@@ -91,64 +95,6 @@
              
   <section id="simlogger-package">
 <h1>SimLogger package<a class="headerlink" href="#simlogger-package" title="Permalink to this heading"></a></h1>
-<section id="module-SimLogger.FigLogger">
-<span id="simlogger-figlogger-module"></span><h2>SimLogger.FigLogger module<a class="headerlink" href="#module-SimLogger.FigLogger" title="Permalink to this heading"></a></h2>
-<dl class="py function">
-<dt class="sig sig-object py" id="SimLogger.FigLogger.createPlot">
-<span class="sig-prename descclassname"><span class="pre">SimLogger.FigLogger.</span></span><span class="sig-name descname"><span class="pre">createPlot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">simTag</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">objTag</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">objFolder</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'data/obj'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">z</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">plotType</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'scatter'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">title</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Plot'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">labels</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">{'x':</span> <span class="pre">'x',</span> <span class="pre">'y':</span> <span class="pre">'y',</span> <span class="pre">'z':</span> <span class="pre">'z'}</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">makeNote</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/SimLogger/FigLogger.html#createPlot"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#SimLogger.FigLogger.createPlot" title="Permalink to this definition"></a></dt>
-<dd><p>Generate a plot that will automatically be saved (using SimLogger)
-and will generate a url to access the graph through the cloud
-(see kachery-cloud-init)</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>simTag</strong> (<em>str</em>) – Unique id for the simulation</p></li>
-<li><p><strong>objTag</strong> (<em>str</em>) – Unique id for this graph within the simulation</p></li>
-<li><p><strong>x</strong> (<em>[</em><em>int</em><em>|</em><em>float</em><em>]</em>) – x values for the graph</p></li>
-<li><p><strong>y</strong> (<em>[</em><em>int</em><em>|</em><em>float</em><em>]</em>) – y values for the graph</p></li>
-<li><p><strong>objFolder</strong> (<em>str</em>) – location where the pickled objects should go</p></li>
-<li><p><strong>z</strong> (<em>[</em><em>int</em><em>|</em><em>float</em><em>[</em>) – z values for the graph (optional, but only for 3d scatter)</p></li>
-<li><p><strong>plotType</strong> (<em>str</em>) – Either “scatter” for scatter plots
-Or “line” for line plots (not for 3d plots)</p></li>
-<li><p><strong>title</strong> (<em>str</em>) – Title for the plot</p></li>
-<li><p><strong>(</strong><strong>{str</strong> (<em>labels</em>) – str}): Key value pairs for the keys “x”, “y”, (“z”) that go to
-the values corresponding to the axis labels</p></li>
-<li><p><strong>makeNote</strong> (<em>bool</em>) – Whether the log should be noted with the saved files</p></li>
-<li><p><strong>**kwargs</strong> – Additional args for the plotly express graph</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>None</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="SimLogger.FigLogger.savePlotly">
-<span class="sig-prename descclassname"><span class="pre">SimLogger.FigLogger.</span></span><span class="sig-name descname"><span class="pre">savePlotly</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">simTag</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">objTag</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ff</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">label</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">objFolder</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'data/obj'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">makeNote</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/SimLogger/FigLogger.html#savePlotly"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#SimLogger.FigLogger.savePlotly" title="Permalink to this definition"></a></dt>
-<dd><p>Save a previously created plotly graph to the cloud for remote access
-and pickle the graph for access later</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>simTag</strong> (<em>str</em>) – Unique id for the simulation</p></li>
-<li><p><strong>objTag</strong> (<em>str</em>) – Unique id for the graph within the simulation</p></li>
-<li><p><strong>ff</strong> (<em>plotly figure</em>) – User created figure (with plotly)</p></li>
-<li><p><strong>label</strong> (<em>str</em>) – Optional label for the figurl cloud saved graph</p></li>
-<li><p><strong>objFolder</strong> (<em>str</em>) – location where the pickled objects should go</p></li>
-<li><p><strong>makeNote</strong> (<em>str</em>) – Note in the log that the pickled file was saved</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>The figurl link to access the graph</p>
-</dd>
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>url (str)</p>
-</dd>
-</dl>
-</dd></dl>
-
-</section>
 <section id="module-SimLogger.SimLogger">
 <span id="simlogger-simlogger-module"></span><h2>SimLogger.SimLogger module<a class="headerlink" href="#module-SimLogger.SimLogger" title="Permalink to this heading"></a></h2>
 <dl class="py function">
@@ -282,6 +228,82 @@ directly to that commit ex. “www.github.com/joey-kilgore/SimLogger”</p></li>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-SimLogger.FigLogger">
+<span id="simlogger-figlogger-module"></span><h2>SimLogger.FigLogger module<a class="headerlink" href="#module-SimLogger.FigLogger" title="Permalink to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="SimLogger.FigLogger.createPlot">
+<span class="sig-prename descclassname"><span class="pre">SimLogger.FigLogger.</span></span><span class="sig-name descname"><span class="pre">createPlot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">simTag</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">objTag</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">objFolder</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'data/obj'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">z</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">plotType</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'scatter'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">title</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Plot'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">labels</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">{'x':</span> <span class="pre">'x',</span> <span class="pre">'y':</span> <span class="pre">'y',</span> <span class="pre">'z':</span> <span class="pre">'z'}</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">makeNote</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/SimLogger/FigLogger.html#createPlot"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#SimLogger.FigLogger.createPlot" title="Permalink to this definition"></a></dt>
+<dd><p>Generate a plot that will automatically be saved (using SimLogger)
+and will generate a url to access the graph through the cloud
+(see kachery-cloud-init)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>simTag</strong> (<em>str</em>) – Unique id for the simulation</p></li>
+<li><p><strong>objTag</strong> (<em>str</em>) – Unique id for this graph within the simulation</p></li>
+<li><p><strong>x</strong> (<em>[</em><em>int</em><em>|</em><em>float</em><em>]</em>) – x values for the graph</p></li>
+<li><p><strong>y</strong> (<em>[</em><em>int</em><em>|</em><em>float</em><em>]</em>) – y values for the graph</p></li>
+<li><p><strong>objFolder</strong> (<em>str</em>) – location where the pickled objects should go</p></li>
+<li><p><strong>z</strong> (<em>[</em><em>int</em><em>|</em><em>float</em><em>[</em>) – z values for the graph (optional, but only for 3d scatter)</p></li>
+<li><p><strong>plotType</strong> (<em>str</em>) – Either “scatter” for scatter plots
+Or “line” for line plots (not for 3d plots)</p></li>
+<li><p><strong>title</strong> (<em>str</em>) – Title for the plot</p></li>
+<li><p><strong>(</strong><strong>{str</strong> (<em>labels</em>) – str}): Key value pairs for the keys “x”, “y”, (“z”) that go to
+the values corresponding to the axis labels</p></li>
+<li><p><strong>makeNote</strong> (<em>bool</em>) – Whether the log should be noted with the saved files</p></li>
+<li><p><strong>**kwargs</strong> – Additional args for the plotly express graph</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="SimLogger.FigLogger.savePlotly">
+<span class="sig-prename descclassname"><span class="pre">SimLogger.FigLogger.</span></span><span class="sig-name descname"><span class="pre">savePlotly</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">simTag</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">objTag</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ff</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">label</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">objFolder</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'data/obj'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">makeNote</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/SimLogger/FigLogger.html#savePlotly"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#SimLogger.FigLogger.savePlotly" title="Permalink to this definition"></a></dt>
+<dd><p>Save a previously created plotly graph to the cloud for remote access
+and pickle the graph for access later</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>simTag</strong> (<em>str</em>) – Unique id for the simulation</p></li>
+<li><p><strong>objTag</strong> (<em>str</em>) – Unique id for the graph within the simulation</p></li>
+<li><p><strong>ff</strong> (<em>plotly figure</em>) – User created figure (with plotly)</p></li>
+<li><p><strong>label</strong> (<em>str</em>) – Optional label for the figurl cloud saved graph</p></li>
+<li><p><strong>objFolder</strong> (<em>str</em>) – location where the pickled objects should go</p></li>
+<li><p><strong>makeNote</strong> (<em>str</em>) – Note in the log that the pickled file was saved</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The figurl link to access the graph</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>url (str)</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-SimLogger.SimNotify">
+<span id="simlogger-simnotify-module"></span><h2>SimLogger.SimNotify module<a class="headerlink" href="#module-SimLogger.SimNotify" title="Permalink to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="SimLogger.SimNotify.sendNotification">
+<span class="sig-prename descclassname"><span class="pre">SimLogger.SimNotify.</span></span><span class="sig-name descname"><span class="pre">sendNotification</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">endpoint</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/SimLogger/SimNotify.html#sendNotification"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#SimLogger.SimNotify.sendNotification" title="Permalink to this definition"></a></dt>
+<dd><p>Send notification using notify! Check the README.md for setup details.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>text</strong> (<em>str</em>) – text that will be sent as the notification (typically simTag and
+message) endpoint (str, optional): If a notify channel (endpoint) has
+been setup (<em>which you should</em>) include the link here, and the
+notification will be sent to that channel. If you don’t include this
+then a channel will be generated and you can view it after the fact.</p>
 </dd>
 </dl>
 </dd></dl>
