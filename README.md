@@ -46,6 +46,19 @@ Run the following command and follow the instructions
 ```kachery-cloud-init```
 
 
+To utilize SimNotify you will need to create a notify channel so that your phone (or device)  can be linked to where the notifications will be sent.  
+Go to https://notify.run/ and click `create a channel`  
+Scan the QR code and subscribe/enable notifications (you may need to check your system settings to ensure these are turned on)  
+Copy the link generated, and set the config files on your machine to this link by running:  
+```notify-run configure <paste-link-here>```
+
+Now you should be able to run the python script:
+```
+from SimLogger import SimNotify
+endpoint = "<paste-link-here>"
+SimNotify.sendNotification("Hello World", endpoint=endpoint)
+```
+
 ## Development  
 install all dependencies (including linting and testing) with:  
 `pip install -e '.[lint,test]`  

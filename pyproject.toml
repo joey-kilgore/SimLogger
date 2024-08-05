@@ -8,7 +8,8 @@ dependencies = [
     "pandas",
     "plotly",
     "figurl",
-    "GitPython"
+    "GitPython",
+    "notify_run"
 ]
 
 [project.url]
