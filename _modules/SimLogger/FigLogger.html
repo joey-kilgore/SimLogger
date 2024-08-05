@@ -111,7 +111,7 @@
 <span class="sd">        **kwargs: Additional args for the plotly express graph</span>
 
 <span class="sd">    Returns:</span>
-<span class="sd">        None</span>
+<span class="sd">        url (str): The figurl link to access the graph</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">data</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;x&quot;</span><span class="p">:</span> <span class="n">x</span><span class="p">,</span> <span class="s2">&quot;y&quot;</span><span class="p">:</span> <span class="n">y</span><span class="p">}</span>
     <span class="k">if</span> <span class="n">z</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
@@ -131,7 +131,10 @@
     <span class="k">else</span><span class="p">:</span>
         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Unsupported plotType. Supported types: &#39;scatter&#39;, &#39;line&#39;.&quot;</span><span class="p">)</span>
 
-    <span class="n">savePlotly</span><span class="p">(</span><span class="n">simTag</span><span class="p">,</span> <span class="n">objTag</span><span class="p">,</span> <span class="n">fig</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">title</span><span class="p">,</span> <span class="n">objFolder</span><span class="o">=</span><span class="n">objFolder</span><span class="p">,</span> <span class="n">makeNote</span><span class="o">=</span><span class="n">makeNote</span><span class="p">)</span></div>
+    <span class="n">url</span> <span class="o">=</span> <span class="n">savePlotly</span><span class="p">(</span>
+        <span class="n">simTag</span><span class="p">,</span> <span class="n">objTag</span><span class="p">,</span> <span class="n">fig</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">title</span><span class="p">,</span> <span class="n">objFolder</span><span class="o">=</span><span class="n">objFolder</span><span class="p">,</span> <span class="n">makeNote</span><span class="o">=</span><span class="n">makeNote</span>
+    <span class="p">)</span>
+    <span class="k">return</span> <span class="n">url</span></div>
 
 
 <div class="viewcode-block" id="savePlotly"><a class="viewcode-back" href="../../SimLogger.html#SimLogger.FigLogger.savePlotly">[docs]</a><span class="k">def</span> <span class="nf">savePlotly</span><span class="p">(</span>
