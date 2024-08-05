@@ -1,14 +1,6 @@
 SimLogger package
 =================
 
-SimLogger.FigLogger module
---------------------------
-
-.. automodule:: SimLogger.FigLogger
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
 SimLogger.SimLogger module
 --------------------------
 
@@ -17,3 +9,18 @@ SimLogger.SimLogger module
    :undoc-members:
    :show-inheritance:
 
+SimLogger.FigLogger module
+--------------------------
+
+.. automodule:: SimLogger.FigLogger
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+SimLogger.SimNotify module
+--------------------------
+
+.. automodule:: SimLogger.SimNotify
+   :members:
+   :undoc-members:
+   :show-inheritance:

@@ -61,7 +61,7 @@ SimNotify.sendNotification("Hello World", endpoint=endpoint)
 
 ## Development  
 install all dependencies (including linting and testing) with:  
-`pip install -e '.[lint,test]`  
+`pip install -e '.[lint,test,doc]`  
 
 run tests with:  
 `pytest tests/`
