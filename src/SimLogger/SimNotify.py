@@ -17,3 +17,5 @@ def sendNotification(text, endpoint):
     SimLogger.logNotes(f"USING NOTIFY ENDPOINT: {endpoint}")
     response = requests.post(endpoint, data=text, headers={})
     SimLogger.logNotes(f"NOTIFICATION SENT:{str(response)} {text}")
+
+    return response
