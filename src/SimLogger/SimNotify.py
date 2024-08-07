@@ -1,26 +1,21 @@
-from notify_run import Notify
 from SimLogger import SimLogger
+import requests
 
 
-def sendNotification(text, endpoint=None):
+def sendNotification(text, endpoint):
     """Send notification using notify! Check the README.md for setup details.
 
     Args:
         text (str): text that will be sent as the notification (typically simTag and
-            message) endpoint (str, optional): If a notify channel (endpoint) has
-            been setup (*which you should*) include the link here, and the
-            notification will be sent to that channel. If you don't include this
-            then a channel will be generated and you can view it after the fact.
+            message)
+        endpoint (str): The channel the notifications will be sent to
 
     """
-    if endpoint is None:
-        notify = Notify()
-        endpoint = notify.register()
-        SimLogger.logNotes("WARNING: NOTIFY NOT CONFIGURED. PLEASE SEE README.MD")
-    else:
-        # simplify handling if users don't remove /c/
-        endpoint = endpoint.replace("/c/", "/")
-        notify = Notify(endpoint=endpoint)
+
+    endpoint = endpoint.replace("/c/", "/").strip("/")
 
     SimLogger.logNotes(f"USING NOTIFY ENDPOINT: {endpoint}")
-    notify.send(text)
+    response = requests.post(endpoint, data=text, headers={})
+    SimLogger.logNotes(f"NOTIFICATION SENT:{str(response)} {text}")
+
+    return response
