@@ -298,15 +298,15 @@ and pickle the graph for access later</p>
 <span id="simlogger-simnotify-module"></span><h2>SimLogger.SimNotify module<a class="headerlink" href="#module-SimLogger.SimNotify" title="Permalink to this heading"></a></h2>
 <dl class="py function">
 <dt class="sig sig-object py" id="SimLogger.SimNotify.sendNotification">
-<span class="sig-prename descclassname"><span class="pre">SimLogger.SimNotify.</span></span><span class="sig-name descname"><span class="pre">sendNotification</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">endpoint</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/SimLogger/SimNotify.html#sendNotification"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#SimLogger.SimNotify.sendNotification" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">SimLogger.SimNotify.</span></span><span class="sig-name descname"><span class="pre">sendNotification</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">endpoint</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/SimLogger/SimNotify.html#sendNotification"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#SimLogger.SimNotify.sendNotification" title="Permalink to this definition"></a></dt>
 <dd><p>Send notification using notify! Check the README.md for setup details.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>text</strong> (<em>str</em>) – text that will be sent as the notification (typically simTag and
-message) endpoint (str, optional): If a notify channel (endpoint) has
-been setup (<em>which you should</em>) include the link here, and the
-notification will be sent to that channel. If you don’t include this
-then a channel will be generated and you can view it after the fact.</p>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>text</strong> (<em>str</em>) – text that will be sent as the notification (typically simTag and
+message)</p></li>
+<li><p><strong>endpoint</strong> (<em>str</em>) – The channel the notifications will be sent to</p></li>
+</ul>
 </dd>
 </dl>
 </dd></dl>

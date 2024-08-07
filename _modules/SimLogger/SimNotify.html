@@ -71,32 +71,27 @@
            <div itemprop="articleBody">
              
   <h1>Source code for SimLogger.SimNotify</h1><div class="highlight"><pre>
-<span></span><span class="kn">from</span> <span class="nn">notify_run</span> <span class="kn">import</span> <span class="n">Notify</span>
-<span class="kn">from</span> <span class="nn">SimLogger</span> <span class="kn">import</span> <span class="n">SimLogger</span>
+<span></span><span class="kn">from</span> <span class="nn">SimLogger</span> <span class="kn">import</span> <span class="n">SimLogger</span>
+<span class="kn">import</span> <span class="nn">requests</span>
 
 
-<div class="viewcode-block" id="sendNotification"><a class="viewcode-back" href="../../SimLogger.html#SimLogger.SimNotify.sendNotification">[docs]</a><span class="k">def</span> <span class="nf">sendNotification</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">endpoint</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="sendNotification"><a class="viewcode-back" href="../../SimLogger.html#SimLogger.SimNotify.sendNotification">[docs]</a><span class="k">def</span> <span class="nf">sendNotification</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">endpoint</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Send notification using notify! Check the README.md for setup details.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        text (str): text that will be sent as the notification (typically simTag and</span>
-<span class="sd">            message) endpoint (str, optional): If a notify channel (endpoint) has</span>
-<span class="sd">            been setup (*which you should*) include the link here, and the</span>
-<span class="sd">            notification will be sent to that channel. If you don&#39;t include this</span>
-<span class="sd">            then a channel will be generated and you can view it after the fact.</span>
+<span class="sd">            message)</span>
+<span class="sd">        endpoint (str): The channel the notifications will be sent to</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">if</span> <span class="n">endpoint</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="n">notify</span> <span class="o">=</span> <span class="n">Notify</span><span class="p">()</span>
-        <span class="n">endpoint</span> <span class="o">=</span> <span class="n">notify</span><span class="o">.</span><span class="n">register</span><span class="p">()</span>
-        <span class="n">SimLogger</span><span class="o">.</span><span class="n">logNotes</span><span class="p">(</span><span class="s2">&quot;WARNING: NOTIFY NOT CONFIGURED. PLEASE SEE README.MD&quot;</span><span class="p">)</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="c1"># simplify handling if users don&#39;t remove /c/</span>
-        <span class="n">endpoint</span> <span class="o">=</span> <span class="n">endpoint</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;/c/&quot;</span><span class="p">,</span> <span class="s2">&quot;/&quot;</span><span class="p">)</span>
-        <span class="n">notify</span> <span class="o">=</span> <span class="n">Notify</span><span class="p">(</span><span class="n">endpoint</span><span class="o">=</span><span class="n">endpoint</span><span class="p">)</span>
+
+    <span class="n">endpoint</span> <span class="o">=</span> <span class="n">endpoint</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;/c/&quot;</span><span class="p">,</span> <span class="s2">&quot;/&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">)</span>
 
     <span class="n">SimLogger</span><span class="o">.</span><span class="n">logNotes</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;USING NOTIFY ENDPOINT: </span><span class="si">{</span><span class="n">endpoint</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-    <span class="n">notify</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">text</span><span class="p">)</span></div>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">endpoint</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">text</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="p">{})</span>
+    <span class="n">SimLogger</span><span class="o">.</span><span class="n">logNotes</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;NOTIFICATION SENT:</span><span class="si">{</span><span class="nb">str</span><span class="p">(</span><span class="n">response</span><span class="p">)</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">text</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">response</span></div>
 </pre></div>
 
            </div>
