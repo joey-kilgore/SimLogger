@@ -21,7 +21,7 @@
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="SimLogger package" href="SimLogger.html" /> 
+    <link rel="next" title="SimLogger.SimLogger module" href="SimLogger.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -45,7 +45,9 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="SimLogger.html">SimLogger package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="SimLogger.html">SimLogger.SimLogger module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="FigLogger.html">SimLogger.FigLogger module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="SimNotify.html">SimLogger.SimNotify module</a></li>
 </ul>
 
         </div>
@@ -77,10 +79,18 @@
 <div class="toctree-wrapper compound">
 <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="SimLogger.html">SimLogger package</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="SimLogger.html#module-SimLogger.SimLogger">SimLogger.SimLogger module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="SimLogger.html#module-SimLogger.FigLogger">SimLogger.FigLogger module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="SimLogger.html#module-SimLogger.SimNotify">SimLogger.SimNotify module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="SimLogger.html">SimLogger.SimLogger module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="SimLogger.html#module-SimLogger.SimLogger">SimLogger.SimLogger Functions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="FigLogger.html">SimLogger.FigLogger module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="FigLogger.html#installation">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="FigLogger.html#module-SimLogger.FigLogger">SimLogger.FigLogger functions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="SimNotify.html">SimLogger.SimNotify module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="SimNotify.html#installation">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="SimNotify.html#module-SimLogger.SimNotify">SimLogger.FigLogger functions</a></li>
 </ul>
 </li>
 </ul>
@@ -89,10 +99,10 @@
 <p>SimLogger seeks to simplify the process of saving and archiving data for
 scientific computing by handling all the file naming a storing for you.</p>
 <p>Archive your python objects simply and easiy, and never worry about overwriting files.
-All data is defined with 3 key components
-<code class="docutils literal notranslate"><span class="pre">simTag</span></code> - tag unique for each simulation (like naming the experiment)
-<code class="docutils literal notranslate"><span class="pre">objTag</span></code> - tag unique for each object (like the variable within the experiments)
-<code class="docutils literal notranslate"><span class="pre">date-time</span></code> - this is automatically added by SimLogger to help ensure unqiueness of files</p>
+All data is defined with 3 key components</p>
+<p><code class="docutils literal notranslate"><span class="pre">simTag</span></code> - tag unique for each simulation (like naming the experiment)</p>
+<p><code class="docutils literal notranslate"><span class="pre">objTag</span></code> - tag unique for each object (like the variable within the experiments)</p>
+<p><code class="docutils literal notranslate"><span class="pre">date-time</span></code> - this is automatically added by SimLogger to help ensure unqiueness of files</p>
 <p>With that you can save your data easily!</p>
 </section>
 <section id="installation">
@@ -130,7 +140,7 @@ All data is defined with 3 key components
 <section id="development">
 <h1>Development<a class="headerlink" href="#development" title="Permalink to this heading"></a></h1>
 <p>install all dependencies (including linting and testing) with:</p>
-<p><code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">-e</span> <span class="pre">'.[lint,test]</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">-e</span> <span class="pre">'.[lint,test,doc]</span></code></p>
 <p>run tests with:</p>
 <p><code class="docutils literal notranslate"><span class="pre">pytest</span> <span class="pre">tests/</span></code></p>
 <p>run linting + formatting + etc with:</p>
@@ -149,7 +159,7 @@ All data is defined with 3 key components
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="SimLogger.html" class="btn btn-neutral float-right" title="SimLogger package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="SimLogger.html" class="btn btn-neutral float-right" title="SimLogger.SimLogger module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

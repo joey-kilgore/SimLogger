@@ -43,7 +43,9 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../SimLogger.html">SimLogger package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../SimLogger.html">SimLogger.SimLogger module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../FigLogger.html">SimLogger.FigLogger module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../SimNotify.html">SimLogger.SimNotify module</a></li>
 </ul>
 
         </div>
@@ -78,7 +80,7 @@
 <span class="kn">import</span> <span class="nn">os</span>
 
 
-<div class="viewcode-block" id="createPlot"><a class="viewcode-back" href="../../SimLogger.html#SimLogger.FigLogger.createPlot">[docs]</a><span class="k">def</span> <span class="nf">createPlot</span><span class="p">(</span>
+<div class="viewcode-block" id="createPlot"><a class="viewcode-back" href="../../FigLogger.html#SimLogger.FigLogger.createPlot">[docs]</a><span class="k">def</span> <span class="nf">createPlot</span><span class="p">(</span>
     <span class="n">simTag</span><span class="p">,</span>
     <span class="n">objTag</span><span class="p">,</span>
     <span class="n">x</span><span class="p">,</span>
@@ -137,7 +139,7 @@
     <span class="k">return</span> <span class="n">url</span></div>
 
 
-<div class="viewcode-block" id="savePlotly"><a class="viewcode-back" href="../../SimLogger.html#SimLogger.FigLogger.savePlotly">[docs]</a><span class="k">def</span> <span class="nf">savePlotly</span><span class="p">(</span>
+<div class="viewcode-block" id="savePlotly"><a class="viewcode-back" href="../../FigLogger.html#SimLogger.FigLogger.savePlotly">[docs]</a><span class="k">def</span> <span class="nf">savePlotly</span><span class="p">(</span>
     <span class="n">simTag</span><span class="p">,</span> <span class="n">objTag</span><span class="p">,</span> <span class="n">ff</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">objFolder</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s2">&quot;data&quot;</span><span class="p">,</span> <span class="s2">&quot;obj&quot;</span><span class="p">),</span> <span class="n">makeNote</span><span class="o">=</span><span class="kc">True</span>
 <span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Save a previously created plotly graph to the cloud for remote access</span>

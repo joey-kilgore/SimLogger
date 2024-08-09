@@ -9,10 +9,10 @@ Welcome to SimLogger's documentation!
 .. toctree::
    :maxdepth: 2
    :caption: Contents:
-
+   
    SimLogger
-
-
+   FigLogger
+   SimNotify
 
 A simplified method for logging and saving information in scientific computing.
 
@@ -20,9 +20,12 @@ SimLogger seeks to simplify the process of saving and archiving data for
 scientific computing by handling all the file naming a storing for you.
 
 Archive your python objects simply and easiy, and never worry about overwriting files.
-All data is defined with 3 key components  
+All data is defined with 3 key components
+
 ``simTag`` - tag unique for each simulation (like naming the experiment)  
+
 ``objTag`` - tag unique for each object (like the variable within the experiments)  
+
 ``date-time`` - this is automatically added by SimLogger to help ensure unqiueness of files  
 
 With that you can save your data easily!  
@@ -75,7 +78,7 @@ Development
 ===========
 install all dependencies (including linting and testing) with:  
 
-``pip install -e '.[lint,test]``
+``pip install -e '.[lint,test,doc]``
 
 run tests with:  
 
