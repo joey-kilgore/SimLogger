@@ -194,6 +194,24 @@ def getObjectFromUniqueId(uniqueId, objFolder=os.path.join("data", "obj")):
     return tempObj
 
 
+def getObj(simTag, objTag, objFolder=os.path.join("data", "obj")):
+    """Loads a previously saved object using the simTag and objTag
+    If there are multiple objects that have this, we are automatically
+    grabbing the first instance found (by alphabetical file name).
+    If you accidently saved multiple copies (differentiated by the
+    date-time string, you should use `getObjectFromUniqueId()`
+
+    Args:
+        simTag (str): Unique tag for the simulation
+        objTag (str): Unique tag for the object saved
+        objFolder (str): Folder containing the pickled file
+
+    Returns:
+        obj (Object): Loaded pickled object
+    """
+    return getObjectFromUniqueId(f"{simTag}_{objTag}", objFolder=objFolder)
+
+
 def isSimTagUsed(simTag, objFolder=os.path.join("data", "obj")):
     """Checks if there are any objects already saved in the objFolder
     that uses the simTag

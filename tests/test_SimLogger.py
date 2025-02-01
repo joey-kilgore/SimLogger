@@ -6,5 +6,7 @@ def test_save_and_get():
     simTag = "testing-simTag"
     objTag = "testing-objTag"
     SimLogger.saveObj(simTag, objTag, a)
-    aLoaded = SimLogger.getObjectFromUniqueId(f"{simTag}_{objTag}")
-    assert a == aLoaded
+    aLoadedUniqueId = SimLogger.getObjectFromUniqueId(f"{simTag}_{objTag}")
+    aLoadedObjTag = SimLogger.getObj(simTag, objTag)
+    assert a == aLoadedUniqueId
+    assert a == aLoadedObjTag
