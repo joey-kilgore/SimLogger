@@ -106,7 +106,7 @@ give a link to the graph in the log file.</p>
 <span id="simlogger-figlogger-functions"></span><h2>SimLogger.FigLogger functions<a class="headerlink" href="#module-SimLogger.FigLogger" title="Permalink to this heading"></a></h2>
 <dl class="py function">
 <dt class="sig sig-object py" id="SimLogger.FigLogger.createPlot">
-<span class="sig-prename descclassname"><span class="pre">SimLogger.FigLogger.</span></span><span class="sig-name descname"><span class="pre">createPlot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">simTag</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">objTag</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">objFolder</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'data/obj'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">z</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">plotType</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'scatter'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">title</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Plot'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">labels</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">{'x':</span> <span class="pre">'x',</span> <span class="pre">'y':</span> <span class="pre">'y',</span> <span class="pre">'z':</span> <span class="pre">'z'}</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">makeNote</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/SimLogger/FigLogger.html#createPlot"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#SimLogger.FigLogger.createPlot" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">SimLogger.FigLogger.</span></span><span class="sig-name descname"><span class="pre">createPlot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">simTag</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">objTag</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">objFolder</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'data/obj'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">z</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">plotType</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'scatter'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">title</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Plot'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">labels</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">{'x':</span> <span class="pre">'x',</span> <span class="pre">'y':</span> <span class="pre">'y',</span> <span class="pre">'z':</span> <span class="pre">'z'}</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">makeNote</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cloudSave</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/SimLogger/FigLogger.html#createPlot"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#SimLogger.FigLogger.createPlot" title="Permalink to this definition"></a></dt>
 <dd><p>Generate a plot that will automatically be saved (using SimLogger)
 and will generate a url to access the graph through the cloud
 (see kachery-cloud-init)</p>
@@ -125,11 +125,16 @@ Or “line” for line plots (not for 3d plots)</p></li>
 <li><p><strong>(</strong><strong>{str</strong> (<em>labels</em>) – str}): Key value pairs for the keys “x”, “y”, (“z”) that go to
 the values corresponding to the axis labels</p></li>
 <li><p><strong>makeNote</strong> (<em>bool</em>) – Whether the log should be noted with the saved files</p></li>
+<li><p><strong>cloudSave</strong> (<em>bool</em>) – optionally save to the cloud (default True)</p></li>
 <li><p><strong>**kwargs</strong> – Additional args for the plotly express graph</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>The figurl link to access the graph</p>
+<dd class="field-even"><p><dl class="simple">
+<dt>The figurl link to access the graph.</dt><dd><p>Returns None if cloud save not chosen</p>
+</dd>
+</dl>
+</p>
 </dd>
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>url (str)</p>
@@ -139,7 +144,7 @@ the values corresponding to the axis labels</p></li>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="SimLogger.FigLogger.savePlotly">
-<span class="sig-prename descclassname"><span class="pre">SimLogger.FigLogger.</span></span><span class="sig-name descname"><span class="pre">savePlotly</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">simTag</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">objTag</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ff</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">label</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">objFolder</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'data/obj'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">makeNote</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/SimLogger/FigLogger.html#savePlotly"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#SimLogger.FigLogger.savePlotly" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">SimLogger.FigLogger.</span></span><span class="sig-name descname"><span class="pre">savePlotly</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">simTag</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">objTag</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ff</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">label</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">objFolder</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'data/obj'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">makeNote</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cloudSave</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/SimLogger/FigLogger.html#savePlotly"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#SimLogger.FigLogger.savePlotly" title="Permalink to this definition"></a></dt>
 <dd><p>Save a previously created plotly graph to the cloud for remote access
 and pickle the graph for access later</p>
 <dl class="field-list simple">
@@ -151,10 +156,15 @@ and pickle the graph for access later</p>
 <li><p><strong>label</strong> (<em>str</em>) – Optional label for the figurl cloud saved graph</p></li>
 <li><p><strong>objFolder</strong> (<em>str</em>) – location where the pickled objects should go</p></li>
 <li><p><strong>makeNote</strong> (<em>str</em>) – Note in the log that the pickled file was saved</p></li>
+<li><p><strong>cloudSave</strong> (<em>bool</em>) – save the figure to cloud</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>The figurl link to access the graph</p>
+<dd class="field-even"><p><dl class="simple">
+<dt>The figurl link to access the graph.</dt><dd><p>Returns None if not saving to the cloud</p>
+</dd>
+</dl>
+</p>
 </dd>
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>url (str)</p>
