@@ -8,5 +8,6 @@ def test_graph_save():
     objTag = "testing-graph"
     FigLogger.createPlot(simTag, objTag, x, y, cloudSave=False)
     loadedFig = SimLogger.getObj(simTag, objTag)
+    SimLogger.logNotes(str(loadedFig))
     assert FigLogger.extractData(loadedFig, axis="x") == x
     assert FigLogger.extractData(loadedFig, axis="y") == y
