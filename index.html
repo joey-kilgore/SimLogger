@@ -7,7 +7,7 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Welcome to SimLogger’s documentation! &mdash; SimLogger  documentation</title>
-      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
 
   
@@ -111,7 +111,7 @@ All data is defined with 3 key components</p>
 <p>Run the following command and follow the instructions</p>
 <p><code class="docutils literal notranslate"><span class="pre">kachery-cloud-init</span></code></p>
 <p>Then you can test it out!</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">SimLogger</span> <span class="kn">import</span> <span class="n">SimLogger</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">SimLogger</span><span class="w"> </span><span class="kn">import</span> <span class="n">SimLogger</span>
 <span class="n">simTag</span> <span class="o">=</span> <span class="s1">&#39;sampleSimulation&#39;</span>
 <span class="n">objTag</span> <span class="o">=</span> <span class="s1">&#39;sampleArray&#39;</span>
 <span class="n">sampleArray</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">]</span>
@@ -126,7 +126,7 @@ All data is defined with 3 key components</p>
 </div>
 <p>And you can load your data later using a uniqueId</p>
 <p><code class="docutils literal notranslate"><span class="pre">uniqueId</span></code> - unique identifier that goes to the python pkl file (almost always is <code class="docutils literal notranslate"><span class="pre">simTag_objTag</span></code>)</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">SimLogger</span> <span class="kn">import</span> <span class="n">SimLogger</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">SimLogger</span><span class="w"> </span><span class="kn">import</span> <span class="n">SimLogger</span>
 <span class="n">sampleArrayLoaded</span> <span class="o">=</span> <span class="n">SimLogger</span><span class="o">.</span><span class="n">getObjectFromuniqueId</span><span class="p">(</span><span class="s1">&#39;sampleSimulation_sampleArray&#39;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">sampleArrayLoaded</span><span class="p">)</span>
 

@@ -7,7 +7,7 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>SimLogger.SimNotify module &mdash; SimLogger  documentation</title>
-      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
 
   
@@ -94,7 +94,7 @@ can be finicky. Instead, we will directly send post requests to simplify the pro
 To do this, go to <a class="reference external" href="https://notify.run/">https://notify.run/</a> and create a new channel. Copy the link that it
 generates. This link will be the URL to go to and see any notifications.</p>
 <p>Using that link you can then send notifications:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">SimLogger</span> <span class="kn">import</span> <span class="n">SimNotify</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">SimLogger</span><span class="w"> </span><span class="kn">import</span> <span class="n">SimNotify</span>
 <span class="n">endpoint</span> <span class="o">=</span> <span class="s2">&quot;paste-link-here&quot;</span>
 <span class="n">SimNotify</span><span class="o">.</span><span class="n">sendNotification</span><span class="p">(</span><span class="s2">&quot;Hello World&quot;</span><span class="p">,</span> <span class="n">endpoint</span><span class="p">)</span>
 </pre></div>

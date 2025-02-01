@@ -7,7 +7,7 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>SimLogger.SimLogger module &mdash; SimLogger  documentation</title>
-      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
 
   
@@ -47,6 +47,7 @@
 <li class="toctree-l1 current"><a class="current reference internal" href="#">SimLogger.SimLogger module</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#module-SimLogger.SimLogger">SimLogger.SimLogger Functions</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#SimLogger.SimLogger.convertLog"><code class="docutils literal notranslate"><span class="pre">convertLog()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#SimLogger.SimLogger.getObj"><code class="docutils literal notranslate"><span class="pre">getObj()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#SimLogger.SimLogger.getObjectFromUniqueId"><code class="docutils literal notranslate"><span class="pre">getObjectFromUniqueId()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#SimLogger.SimLogger.isSimTagUsed"><code class="docutils literal notranslate"><span class="pre">isSimTagUsed()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#SimLogger.SimLogger.logNotes"><code class="docutils literal notranslate"><span class="pre">logNotes()</span></code></a></li>
@@ -136,6 +137,31 @@ To reference the object you will need the unique id of the object, which is simT
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="SimLogger.SimLogger.getObj">
+<span class="sig-prename descclassname"><span class="pre">SimLogger.SimLogger.</span></span><span class="sig-name descname"><span class="pre">getObj</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">simTag</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">objTag</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">objFolder</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'data/obj'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/SimLogger/SimLogger.html#getObj"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#SimLogger.SimLogger.getObj" title="Permalink to this definition"></a></dt>
+<dd><p>Loads a previously saved object using the simTag and objTag
+If there are multiple objects that have this, we are automatically
+grabbing the first instance found (by alphabetical file name).
+If you accidently saved multiple copies (differentiated by the
+date-time string, you should use <cite>getObjectFromUniqueId()</cite></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>simTag</strong> (<em>str</em>) – Unique tag for the simulation</p></li>
+<li><p><strong>objTag</strong> (<em>str</em>) – Unique tag for the object saved</p></li>
+<li><p><strong>objFolder</strong> (<em>str</em>) – Folder containing the pickled file</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Loaded pickled object</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>obj (Object)</p>
 </dd>
 </dl>
 </dd></dl>

@@ -6,7 +6,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>SimLogger.SimLogger &mdash; SimLogger  documentation</title>
-      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
 
   
@@ -71,18 +71,18 @@
            <div itemprop="articleBody">
              
   <h1>Source code for SimLogger.SimLogger</h1><div class="highlight"><pre>
-<span></span><span class="kn">import</span> <span class="nn">logging</span>
-<span class="kn">import</span> <span class="nn">pickle</span>
-<span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
-<span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="kn">import</span> <span class="nn">os</span>
-<span class="kn">from</span> <span class="nn">git</span> <span class="kn">import</span> <span class="n">Repo</span>
+<span></span><span class="kn">import</span><span class="w"> </span><span class="nn">logging</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pickle</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">datetime</span><span class="w"> </span><span class="kn">import</span> <span class="n">datetime</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">git</span><span class="w"> </span><span class="kn">import</span> <span class="n">Repo</span>
 
 <span class="n">isLoaded</span> <span class="o">=</span> <span class="kc">False</span>
 
 
-<div class="viewcode-block" id="setupLogger"><a class="viewcode-back" href="../../SimLogger.html#SimLogger.SimLogger.setupLogger">[docs]</a><span class="k">def</span> <span class="nf">setupLogger</span><span class="p">(</span><span class="n">fileName</span><span class="o">=</span><span class="s2">&quot;example.log&quot;</span><span class="p">,</span> <span class="n">githubLink</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="setupLogger"><a class="viewcode-back" href="../../SimLogger.html#SimLogger.SimLogger.setupLogger">[docs]</a><span class="k">def</span><span class="w"> </span><span class="nf">setupLogger</span><span class="p">(</span><span class="n">fileName</span><span class="o">=</span><span class="s2">&quot;example.log&quot;</span><span class="p">,</span> <span class="n">githubLink</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Initialize the logger. Sets the log directory and the default object directoy.</span>
 
 <span class="sd">    Args:</span>
@@ -122,7 +122,7 @@
         <span class="n">logNotes</span><span class="p">(</span><span class="s2">&quot;ERROR LOADING GIT: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">))</span></div>
 
 
-<div class="viewcode-block" id="logNotes"><a class="viewcode-back" href="../../SimLogger.html#SimLogger.SimLogger.logNotes">[docs]</a><span class="k">def</span> <span class="nf">logNotes</span><span class="p">(</span><span class="n">notes</span><span class="p">):</span>
+<div class="viewcode-block" id="logNotes"><a class="viewcode-back" href="../../SimLogger.html#SimLogger.SimLogger.logNotes">[docs]</a><span class="k">def</span><span class="w"> </span><span class="nf">logNotes</span><span class="p">(</span><span class="n">notes</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Save a notes string to the log directly</span>
 
 <span class="sd">    Args:</span>
@@ -137,7 +137,7 @@
     <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="n">notes</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="saveObj"><a class="viewcode-back" href="../../SimLogger.html#SimLogger.SimLogger.saveObj">[docs]</a><span class="k">def</span> <span class="nf">saveObj</span><span class="p">(</span><span class="n">simTag</span><span class="p">,</span> <span class="n">objTag</span><span class="p">,</span> <span class="n">obj</span><span class="p">,</span> <span class="n">objFolder</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s2">&quot;data&quot;</span><span class="p">,</span> <span class="s2">&quot;obj&quot;</span><span class="p">),</span> <span class="n">makeNote</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<div class="viewcode-block" id="saveObj"><a class="viewcode-back" href="../../SimLogger.html#SimLogger.SimLogger.saveObj">[docs]</a><span class="k">def</span><span class="w"> </span><span class="nf">saveObj</span><span class="p">(</span><span class="n">simTag</span><span class="p">,</span> <span class="n">objTag</span><span class="p">,</span> <span class="n">obj</span><span class="p">,</span> <span class="n">objFolder</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s2">&quot;data&quot;</span><span class="p">,</span> <span class="s2">&quot;obj&quot;</span><span class="p">),</span> <span class="n">makeNote</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Save an object (obj) to pickle file in the object folder.</span>
 <span class="sd">    The file name will be the {simTag}_{objTag}_{dateTimeString}.pkl</span>
 
@@ -167,7 +167,7 @@
     <span class="k">return</span> <span class="n">filePath</span></div>
 
 
-<div class="viewcode-block" id="saveSimulation"><a class="viewcode-back" href="../../SimLogger.html#SimLogger.SimLogger.saveSimulation">[docs]</a><span class="k">def</span> <span class="nf">saveSimulation</span><span class="p">(</span><span class="n">simTag</span><span class="p">,</span> <span class="n">inputDict</span><span class="p">,</span> <span class="n">outputDict</span><span class="p">,</span> <span class="n">notes</span><span class="o">=</span><span class="s2">&quot;No additional notes&quot;</span><span class="p">):</span>
+<div class="viewcode-block" id="saveSimulation"><a class="viewcode-back" href="../../SimLogger.html#SimLogger.SimLogger.saveSimulation">[docs]</a><span class="k">def</span><span class="w"> </span><span class="nf">saveSimulation</span><span class="p">(</span><span class="n">simTag</span><span class="p">,</span> <span class="n">inputDict</span><span class="p">,</span> <span class="n">outputDict</span><span class="p">,</span> <span class="n">notes</span><span class="o">=</span><span class="s2">&quot;No additional notes&quot;</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Save inputs and outputs of a simulation</span>
 
 <span class="sd">    Args:</span>
@@ -204,7 +204,7 @@
     <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;NOTE,&quot;</span> <span class="o">+</span> <span class="n">simTag</span> <span class="o">+</span> <span class="s2">&quot;,&quot;</span> <span class="o">+</span> <span class="n">notes</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="convertLog"><a class="viewcode-back" href="../../SimLogger.html#SimLogger.SimLogger.convertLog">[docs]</a><span class="k">def</span> <span class="nf">convertLog</span><span class="p">(</span><span class="n">logfile</span><span class="o">=</span><span class="s2">&quot;example.log&quot;</span><span class="p">,</span> <span class="n">logdir</span><span class="o">=</span><span class="s2">&quot;.&quot;</span><span class="p">):</span>
+<div class="viewcode-block" id="convertLog"><a class="viewcode-back" href="../../SimLogger.html#SimLogger.SimLogger.convertLog">[docs]</a><span class="k">def</span><span class="w"> </span><span class="nf">convertLog</span><span class="p">(</span><span class="n">logfile</span><span class="o">=</span><span class="s2">&quot;example.log&quot;</span><span class="p">,</span> <span class="n">logdir</span><span class="o">=</span><span class="s2">&quot;.&quot;</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Convert a log to a csv format based on the simulation input/outputs</span>
 
 <span class="sd">    Args:</span>
@@ -249,7 +249,7 @@
     <span class="n">df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">fileName</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s2">&quot;,&quot;</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="getObjectFromUniqueId"><a class="viewcode-back" href="../../SimLogger.html#SimLogger.SimLogger.getObjectFromUniqueId">[docs]</a><span class="k">def</span> <span class="nf">getObjectFromUniqueId</span><span class="p">(</span><span class="n">uniqueId</span><span class="p">,</span> <span class="n">objFolder</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s2">&quot;data&quot;</span><span class="p">,</span> <span class="s2">&quot;obj&quot;</span><span class="p">)):</span>
+<div class="viewcode-block" id="getObjectFromUniqueId"><a class="viewcode-back" href="../../SimLogger.html#SimLogger.SimLogger.getObjectFromUniqueId">[docs]</a><span class="k">def</span><span class="w"> </span><span class="nf">getObjectFromUniqueId</span><span class="p">(</span><span class="n">uniqueId</span><span class="p">,</span> <span class="n">objFolder</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s2">&quot;data&quot;</span><span class="p">,</span> <span class="s2">&quot;obj&quot;</span><span class="p">)):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Loads an object previously saved from the unique id ({simTag}_{objTag})</span>
 
 <span class="sd">    Args:</span>
@@ -267,7 +267,25 @@
     <span class="k">return</span> <span class="n">tempObj</span></div>
 
 
-<div class="viewcode-block" id="isSimTagUsed"><a class="viewcode-back" href="../../SimLogger.html#SimLogger.SimLogger.isSimTagUsed">[docs]</a><span class="k">def</span> <span class="nf">isSimTagUsed</span><span class="p">(</span><span class="n">simTag</span><span class="p">,</span> <span class="n">objFolder</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s2">&quot;data&quot;</span><span class="p">,</span> <span class="s2">&quot;obj&quot;</span><span class="p">)):</span>
+<div class="viewcode-block" id="getObj"><a class="viewcode-back" href="../../SimLogger.html#SimLogger.SimLogger.getObj">[docs]</a><span class="k">def</span><span class="w"> </span><span class="nf">getObj</span><span class="p">(</span><span class="n">simTag</span><span class="p">,</span> <span class="n">objTag</span><span class="p">,</span> <span class="n">objFolder</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s2">&quot;data&quot;</span><span class="p">,</span> <span class="s2">&quot;obj&quot;</span><span class="p">)):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Loads a previously saved object using the simTag and objTag</span>
+<span class="sd">    If there are multiple objects that have this, we are automatically</span>
+<span class="sd">    grabbing the first instance found (by alphabetical file name).</span>
+<span class="sd">    If you accidently saved multiple copies (differentiated by the</span>
+<span class="sd">    date-time string, you should use `getObjectFromUniqueId()`</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        simTag (str): Unique tag for the simulation</span>
+<span class="sd">        objTag (str): Unique tag for the object saved</span>
+<span class="sd">        objFolder (str): Folder containing the pickled file</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        obj (Object): Loaded pickled object</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">getObjectFromUniqueId</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">simTag</span><span class="si">}</span><span class="s2">_</span><span class="si">{</span><span class="n">objTag</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">objFolder</span><span class="o">=</span><span class="n">objFolder</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="isSimTagUsed"><a class="viewcode-back" href="../../SimLogger.html#SimLogger.SimLogger.isSimTagUsed">[docs]</a><span class="k">def</span><span class="w"> </span><span class="nf">isSimTagUsed</span><span class="p">(</span><span class="n">simTag</span><span class="p">,</span> <span class="n">objFolder</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s2">&quot;data&quot;</span><span class="p">,</span> <span class="s2">&quot;obj&quot;</span><span class="p">)):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Checks if there are any objects already saved in the objFolder</span>
 <span class="sd">    that uses the simTag</span>
 

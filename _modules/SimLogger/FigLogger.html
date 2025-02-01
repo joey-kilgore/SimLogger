@@ -6,7 +6,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>SimLogger.FigLogger &mdash; SimLogger  documentation</title>
-      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
 
   
@@ -71,14 +71,14 @@
            <div itemprop="articleBody">
              
   <h1>Source code for SimLogger.FigLogger</h1><div class="highlight"><pre>
-<span></span><span class="kn">from</span> <span class="nn">SimLogger</span> <span class="kn">import</span> <span class="n">SimLogger</span>
-<span class="kn">import</span> <span class="nn">figurl</span> <span class="k">as</span> <span class="nn">fig</span>
-<span class="kn">import</span> <span class="nn">plotly.express</span> <span class="k">as</span> <span class="nn">px</span>
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="kn">import</span> <span class="nn">os</span>
+<span></span><span class="kn">from</span><span class="w"> </span><span class="nn">SimLogger</span><span class="w"> </span><span class="kn">import</span> <span class="n">SimLogger</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">figurl</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">fig</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">plotly.express</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">px</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
 
 
-<div class="viewcode-block" id="createPlot"><a class="viewcode-back" href="../../FigLogger.html#SimLogger.FigLogger.createPlot">[docs]</a><span class="k">def</span> <span class="nf">createPlot</span><span class="p">(</span>
+<div class="viewcode-block" id="createPlot"><a class="viewcode-back" href="../../FigLogger.html#SimLogger.FigLogger.createPlot">[docs]</a><span class="k">def</span><span class="w"> </span><span class="nf">createPlot</span><span class="p">(</span>
     <span class="n">simTag</span><span class="p">,</span>
     <span class="n">objTag</span><span class="p">,</span>
     <span class="n">x</span><span class="p">,</span>
@@ -137,7 +137,7 @@
     <span class="k">return</span> <span class="n">url</span></div>
 
 
-<div class="viewcode-block" id="savePlotly"><a class="viewcode-back" href="../../FigLogger.html#SimLogger.FigLogger.savePlotly">[docs]</a><span class="k">def</span> <span class="nf">savePlotly</span><span class="p">(</span>
+<div class="viewcode-block" id="savePlotly"><a class="viewcode-back" href="../../FigLogger.html#SimLogger.FigLogger.savePlotly">[docs]</a><span class="k">def</span><span class="w"> </span><span class="nf">savePlotly</span><span class="p">(</span>
     <span class="n">simTag</span><span class="p">,</span> <span class="n">objTag</span><span class="p">,</span> <span class="n">ff</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">objFolder</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s2">&quot;data&quot;</span><span class="p">,</span> <span class="s2">&quot;obj&quot;</span><span class="p">),</span> <span class="n">makeNote</span><span class="o">=</span><span class="kc">True</span>
 <span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Save a previously created plotly graph to the cloud for remote access</span>
