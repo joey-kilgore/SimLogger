@@ -108,3 +108,18 @@ def savePlotly(
     SimLogger.saveObj(simTag, objTag, ff, objFolder=objFolder, makeNote=makeNote)
 
     return url
+
+def extractData(fig, axis="x"):
+    """Extract the data from a plotly object
+
+    Args:
+        fig: Loaded plotly graph
+        axis (str): The axis data wanted ("x", "y", "z")
+
+    Returns:
+        list: axis data in list
+    """
+    data = fig["data"][0][axis]
+    if isinstance(data, dict) and "bdata" in data:
+        return list(data["bdata"])
+    return list(data)
