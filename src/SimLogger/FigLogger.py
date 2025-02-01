@@ -16,6 +16,7 @@ def createPlot(
     title="Plot",
     labels={"x": "x", "y": "y", "z": "z"},
     makeNote=True,
+    cloudSave=True,
     **kwargs,
 ):
     """Generate a plot that will automatically be saved (using SimLogger)
@@ -35,10 +36,12 @@ def createPlot(
         labels ({str:str}): Key value pairs for the keys "x", "y", ("z") that go to
                             the values corresponding to the axis labels
         makeNote (bool): Whether the log should be noted with the saved files
+        cloudSave (bool): optionally save to the cloud (default True)
         **kwargs: Additional args for the plotly express graph
 
     Returns:
-        url (str): The figurl link to access the graph
+        url (str): The figurl link to access the graph.
+                    Returns None if cloud save not chosen
     """
     data = {"x": x, "y": y}
     if z is not None:
@@ -59,13 +62,25 @@ def createPlot(
         raise ValueError("Unsupported plotType. Supported types: 'scatter', 'line'.")
 
     url = savePlotly(
-        simTag, objTag, fig, label=title, objFolder=objFolder, makeNote=makeNote
+        simTag,
+        objTag,
+        fig,
+        label=title,
+        objFolder=objFolder,
+        makeNote=makeNote,
+        cloudSave=cloudSave,
     )
     return url
 
 
 def savePlotly(
-    simTag, objTag, ff, label="", objFolder=os.path.join("data", "obj"), makeNote=True
+    simTag,
+    objTag,
+    ff,
+    label="",
+    objFolder=os.path.join("data", "obj"),
+    makeNote=True,
+    cloudSave=True,
 ):
     """Save a previously created plotly graph to the cloud for remote access
     and pickle the graph for access later
@@ -77,14 +92,19 @@ def savePlotly(
         label (str): Optional label for the figurl cloud saved graph
         objFolder (str): location where the pickled objects should go
         makeNote (str): Note in the log that the pickled file was saved
+        cloudSave (bool): save the figure to cloud
 
     Returns:
-        url (str): The figurl link to access the graph
+        url (str): The figurl link to access the graph.
+                       Returns None if not saving to the cloud
     """
     if label == "":
         label = objTag
-    url = fig.Plotly(ff).url(label=label)
-    SimLogger.logNotes(f"{label} GRAPH AVAILABLE AT: {url}")
+
+    url = None
+    if cloudSave:
+        url = fig.Plotly(ff).url(label=label)
+        SimLogger.logNotes(f"{label} GRAPH AVAILABLE AT: {url}")
     SimLogger.saveObj(simTag, objTag, ff, objFolder=objFolder, makeNote=makeNote)
 
     return url
