@@ -64,6 +64,45 @@ def logNotes(notes):
     logging.info(notes)
 
 
+def saveArgs(simTag, args, objFolder=os.path.join("data", "obj"), makeNote=True):
+    """Save argparse command line arguments to a pickle file and optionally log them.
+    This is a convenience function to automatically save CLI arguments from argparse.
+
+    Args:
+        simTag (str): Unique tag for the simulation
+        args (argparse.Namespace): Parsed arguments from argparse
+            ArgumentParser.parse_args()
+        objFolder (str): Folder where the pickled file will be saved
+        makeNote (bool): Sets whether an additional note is made about the
+            arguments
+
+    Returns:
+        filePath (str): the unique file path where the pickled arguments are saved
+
+    Example:
+        >>> import argparse
+        >>> from SimLogger import SimLogger
+        >>> parser = argparse.ArgumentParser()
+        >>> parser.add_argument('--param1', type=int, default=10)
+        >>> parser.add_argument('--param2', type=str, default='test')
+        >>> args = parser.parse_args()
+        >>> SimLogger.saveArgs('mySimulation', args)
+    """
+    # Convert argparse.Namespace to dictionary for better readability
+    args_dict = vars(args)
+
+    # Save the arguments as a pickled object
+    filePath = saveObj(simTag, "args", args_dict, objFolder=objFolder, makeNote=False)
+
+    # Log each argument individually for easy reference
+    if makeNote:
+        logNotes("ARGS," + simTag + ",saved," + filePath)
+        for key, value in args_dict.items():
+            logNotes("ARG," + simTag + "," + key + "," + str(value))
+
+    return filePath
+
+
 def saveObj(simTag, objTag, obj, objFolder=os.path.join("data", "obj"), makeNote=False):
     """Save an object (obj) to pickle file in the object folder.
     The file name will be the {simTag}_{objTag}_{dateTimeString}.pkl

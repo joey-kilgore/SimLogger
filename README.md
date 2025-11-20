@@ -37,6 +37,38 @@ print(sampleArrayLoaded)
 # [1, 2, 3, 4]
 ```
 
+## Autosave Command Line Arguments
+Never forget to save your argparse CLI arguments again! SimLogger provides a convenient `saveArgs()` function that automatically saves all command-line arguments from argparse.
+
+```python
+import argparse
+from SimLogger import SimLogger
+
+parser = argparse.ArgumentParser()
+parser.add_argument('--learning_rate', type=float, default=0.001)
+parser.add_argument('--epochs', type=int, default=100)
+parser.add_argument('--model_name', type=str, default='resnet50')
+args = parser.parse_args()
+
+# Automatically save all CLI arguments
+simTag = 'myExperiment'
+SimLogger.saveArgs(simTag, args)
+
+# Outputs
+# 2024-06-25 10:44:44,063 [INFO ] Logger Loaded
+# 2024-06-25 10:44:44,064 [INFO ] ARGS,myExperiment,saved,data/obj/myExperiment_args_2024-06-25_10-44-44.pkl
+# 2024-06-25 10:44:44,064 [INFO ] ARG,myExperiment,learning_rate,0.001
+# 2024-06-25 10:44:44,064 [INFO ] ARG,myExperiment,epochs,100
+# 2024-06-25 10:44:44,064 [INFO ] ARG,myExperiment,model_name,resnet50
+```
+
+Later, you can load the saved arguments:
+```python
+from SimLogger import SimLogger
+loaded_args = SimLogger.getObj('myExperiment', 'args')
+print(loaded_args['learning_rate'])  # 0.001
+```
+
 ## Installation
 Install the python package  
 ```pip install SimLogger```  
