@@ -37,6 +37,63 @@ print(sampleArrayLoaded)
 # [1, 2, 3, 4]
 ```
 
+## Autosave Command Line Arguments
+Never forget to save your argparse CLI arguments again! SimLogger provides **automatic** saving of command-line arguments.
+
+### Fully Automatic (Recommended)
+Use `SimLogger.ArgumentParser` instead of `argparse.ArgumentParser` for completely automatic saving:
+
+```python
+from SimLogger import SimLogger
+
+# Set your simulation tag once
+SimLogger.setSimTag('myExperiment')
+
+# Use SimLogger.ArgumentParser instead of argparse.ArgumentParser
+parser = SimLogger.ArgumentParser(description='My Experiment')
+parser.add_argument('--learning_rate', type=float, default=0.001)
+parser.add_argument('--epochs', type=int, default=100)
+parser.add_argument('--model_name', type=str, default='resnet50')
+
+# Arguments are AUTOMATICALLY saved when you call parse_args()!
+args = parser.parse_args()
+
+# Outputs
+# 2024-06-25 10:44:44,063 [INFO ] Logger Loaded
+# 2024-06-25 10:44:44,064 [INFO ] ARGS,myExperiment,saved,data/obj/myExperiment_args_2024-06-25_10-44-44.pkl
+# 2024-06-25 10:44:44,064 [INFO ] ARG,myExperiment,learning_rate,0.001
+# 2024-06-25 10:44:44,064 [INFO ] ARG,myExperiment,epochs,100
+# 2024-06-25 10:44:44,064 [INFO ] ARG,myExperiment,model_name,resnet50
+```
+
+You can also pass the `simTag` directly to the parser:
+```python
+parser = SimLogger.ArgumentParser(simTag='myExperiment')
+```
+
+### Manual Saving
+If you prefer to manually control when arguments are saved, you can use the `saveArgs()` function:
+
+```python
+import argparse
+from SimLogger import SimLogger
+
+parser = argparse.ArgumentParser()
+parser.add_argument('--learning_rate', type=float, default=0.001)
+args = parser.parse_args()
+
+# Manually save all CLI arguments
+SimLogger.saveArgs('myExperiment', args)
+```
+
+### Loading Saved Arguments
+Later, you can load the saved arguments:
+```python
+from SimLogger import SimLogger
+loaded_args = SimLogger.getObj('myExperiment', 'args')
+print(loaded_args['learning_rate'])  # 0.001
+```
+
 ## Installation
 Install the python package  
 ```pip install SimLogger```  

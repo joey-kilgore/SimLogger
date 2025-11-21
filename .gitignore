@@ -164,3 +164,7 @@ cython_debug/
 
 # linting
 .ruff_cache
+
+# SimLogger data directory (test artifacts)
+data/
+

@@ -5,8 +5,10 @@ from pathlib import Path
 import pandas as pd
 import os
 from git import Repo
+import argparse
 
 isLoaded = False
+_simTag = None  # Global variable to store the simulation tag for auto-saving
 
 
 def setupLogger(fileName="example.log", githubLink=None):
@@ -62,6 +64,45 @@ def logNotes(notes):
     if not isLoaded:
         setupLogger()
     logging.info(notes)
+
+
+def saveArgs(simTag, args, objFolder=os.path.join("data", "obj"), makeNote=True):
+    """Save argparse command line arguments to a pickle file and optionally log them.
+    This is a convenience function to automatically save CLI arguments from argparse.
+
+    Args:
+        simTag (str): Unique tag for the simulation
+        args (argparse.Namespace): Parsed arguments from argparse
+            ArgumentParser.parse_args()
+        objFolder (str): Folder where the pickled file will be saved
+        makeNote (bool): Sets whether an additional note is made about the
+            arguments
+
+    Returns:
+        filePath (str): the unique file path where the pickled arguments are saved
+
+    Example:
+        >>> import argparse
+        >>> from SimLogger import SimLogger
+        >>> parser = argparse.ArgumentParser()
+        >>> parser.add_argument('--param1', type=int, default=10)
+        >>> parser.add_argument('--param2', type=str, default='test')
+        >>> args = parser.parse_args()
+        >>> SimLogger.saveArgs('mySimulation', args)
+    """
+    # Convert argparse.Namespace to dictionary for better readability
+    args_dict = vars(args)
+
+    # Save the arguments as a pickled object
+    filePath = saveObj(simTag, "args", args_dict, objFolder=objFolder, makeNote=False)
+
+    # Log each argument individually for easy reference
+    if makeNote:
+        logNotes("ARGS," + simTag + ",saved," + filePath)
+        for key, value in args_dict.items():
+            logNotes("ARG," + simTag + "," + key + "," + str(value))
+
+    return filePath
 
 
 def saveObj(simTag, objTag, obj, objFolder=os.path.join("data", "obj"), makeNote=False):
@@ -228,3 +269,89 @@ def isSimTagUsed(simTag, objFolder=os.path.join("data", "obj")):
     if len(fileList) > 0:
         return False
     return True
+
+
+class ArgumentParser(argparse.ArgumentParser):
+    """Custom ArgumentParser that automatically saves arguments when
+    parse_args() is called.
+
+    This class extends argparse.ArgumentParser to provide automatic saving of
+    command-line arguments. When parse_args() is called, the arguments are
+    automatically saved using saveArgs() if a simulation tag has been set.
+
+    To use this feature:
+    1. Set the simulation tag using setSimTag() before parsing arguments
+    2. Use SimLogger.ArgumentParser instead of argparse.ArgumentParser
+    3. Call parse_args() as usual - arguments will be saved automatically
+
+    Example:
+        >>> from SimLogger import SimLogger
+        >>> SimLogger.setSimTag('myExperiment')
+        >>> parser = SimLogger.ArgumentParser()
+        >>> parser.add_argument('--learning_rate', type=float, default=0.001)
+        >>> args = parser.parse_args()  # Arguments are automatically saved!
+    """
+
+    def __init__(self, *args, simTag=None, autoSave=True, **kwargs):
+        """Initialize the ArgumentParser.
+
+        Args:
+            simTag (str): Optional simulation tag for auto-saving arguments.
+                If not provided, uses the global simTag set by setSimTag().
+            autoSave (bool): Whether to automatically save arguments when
+                parse_args() is called. Default is True.
+            *args, **kwargs: All other arguments are passed to
+                argparse.ArgumentParser
+        """
+        super().__init__(*args, **kwargs)
+        self._simTag = simTag
+        self._autoSave = autoSave
+
+    def parse_args(self, args=None, namespace=None):
+        """Parse arguments and automatically save them if autoSave is enabled.
+
+        Args:
+            args: List of strings to parse. If None, uses sys.argv.
+            namespace: Object to populate with parsed arguments.
+
+        Returns:
+            Namespace object with parsed arguments
+        """
+        parsed_args = super().parse_args(args, namespace)
+
+        # Auto-save if enabled and we have a simTag
+        if self._autoSave:
+            simTag = self._simTag if self._simTag is not None else _simTag
+            if simTag is not None:
+                saveArgs(simTag, parsed_args)
+            else:
+                # Log a warning if auto-save is enabled but no simTag is set
+                global isLoaded
+                if not isLoaded:
+                    setupLogger()
+                logging.warning(
+                    "ArgumentParser auto-save is enabled but no simTag is set. "
+                    "Use setSimTag() or pass simTag to ArgumentParser constructor."
+                )
+
+        return parsed_args
+
+
+def setSimTag(simTag):
+    """Set the global simulation tag for automatic argument saving.
+
+    This sets the simulation tag that will be used by SimLogger.ArgumentParser
+    for automatic saving of parsed arguments.
+
+    Args:
+        simTag (str): Unique tag for the simulation
+
+    Example:
+        >>> from SimLogger import SimLogger
+        >>> SimLogger.setSimTag('myExperiment')
+        >>> parser = SimLogger.ArgumentParser()
+        >>> parser.add_argument('--param1', type=int)
+        >>> args = parser.parse_args()  # Automatically saved to 'myExperiment'
+    """
+    global _simTag
+    _simTag = simTag
