@@ -38,21 +38,25 @@ print(sampleArrayLoaded)
 ```
 
 ## Autosave Command Line Arguments
-Never forget to save your argparse CLI arguments again! SimLogger provides a convenient `saveArgs()` function that automatically saves all command-line arguments from argparse.
+Never forget to save your argparse CLI arguments again! SimLogger provides **automatic** saving of command-line arguments.
+
+### Fully Automatic (Recommended)
+Use `SimLogger.ArgumentParser` instead of `argparse.ArgumentParser` for completely automatic saving:
 
 ```python
-import argparse
 from SimLogger import SimLogger
 
-parser = argparse.ArgumentParser()
+# Set your simulation tag once
+SimLogger.setSimTag('myExperiment')
+
+# Use SimLogger.ArgumentParser instead of argparse.ArgumentParser
+parser = SimLogger.ArgumentParser(description='My Experiment')
 parser.add_argument('--learning_rate', type=float, default=0.001)
 parser.add_argument('--epochs', type=int, default=100)
 parser.add_argument('--model_name', type=str, default='resnet50')
-args = parser.parse_args()
 
-# Automatically save all CLI arguments
-simTag = 'myExperiment'
-SimLogger.saveArgs(simTag, args)
+# Arguments are AUTOMATICALLY saved when you call parse_args()!
+args = parser.parse_args()
 
 # Outputs
 # 2024-06-25 10:44:44,063 [INFO ] Logger Loaded
@@ -62,6 +66,27 @@ SimLogger.saveArgs(simTag, args)
 # 2024-06-25 10:44:44,064 [INFO ] ARG,myExperiment,model_name,resnet50
 ```
 
+You can also pass the `simTag` directly to the parser:
+```python
+parser = SimLogger.ArgumentParser(simTag='myExperiment')
+```
+
+### Manual Saving
+If you prefer to manually control when arguments are saved, you can use the `saveArgs()` function:
+
+```python
+import argparse
+from SimLogger import SimLogger
+
+parser = argparse.ArgumentParser()
+parser.add_argument('--learning_rate', type=float, default=0.001)
+args = parser.parse_args()
+
+# Manually save all CLI arguments
+SimLogger.saveArgs('myExperiment', args)
+```
+
+### Loading Saved Arguments
 Later, you can load the saved arguments:
 ```python
 from SimLogger import SimLogger
